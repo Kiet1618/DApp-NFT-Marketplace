@@ -9,7 +9,7 @@
 | MSSV | Họ tên |
 | --- | ----------- |
 | 20521505| Trần Ngô Tuấn Kiệt |
-| ..... | Nguyễn Hoàng Khoa |
-| ..... | Nguyễn Tuấn Kiệt |
-| .... | Lê Trung Kiên |
-| .... | Nguyễn Văn Huy |
+| 2052xxxx | Nguyễn Hoàng Khoa |
+| 2052xxxx | Nguyễn Tuấn Kiệt |
+| 2052xxxx | Lê Trung Kiên |
+| 2052xxxx | Nguyễn Văn Huy |
