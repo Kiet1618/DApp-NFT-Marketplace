@@ -8,7 +8,7 @@ Trang Web đọc truyện tranh online
 ## Danh sách thành viên
 | MSSV | Họ tên |Nhiệm vụ|
 | --- | ----------- |--------------------|
-| 2052xxxx | Nguyễn Hoàng Khoa (Nhóm trưởng) |---|
+| 20521471 | Nguyễn Hoàng Khoa (Nhóm trưởng) |---|
 | 20521505 | Trần Ngô Tuấn Kiệt |---|
 | 20521500 | Nguyễn Tuấn Kiệt |---|
 | 2052xxxx | Lê Trung Kiên |---|
