@@ -5,11 +5,11 @@
 - ...
 - ...
 # Đồ án môn học IE104
-## Các thành viên
-| MSSV | Họ tên |
-| --- | ----------- |
-| 2052xxxx | Nguyễn Hoàng Khoa (Nhóm trưởng) |
-| 20521505 | Trần Ngô Tuấn Kiệt |
-| 2052xxxx | Nguyễn Tuấn Kiệt |
-| 2052xxxx | Lê Trung Kiên |
-| 20521407 | Nguyễn Văn Huy |
+## Danh sách thành viên
+| MSSV | Họ tên |Nhiệm vụ|
+| --- | ----------- |--------------------|
+| 2052xxxx | Nguyễn Hoàng Khoa (Nhóm trưởng) |---|
+| 20521505 | Trần Ngô Tuấn Kiệt |---|
+| 2052xxxx | Nguyễn Tuấn Kiệt |---|
+| 2052xxxx | Lê Trung Kiên |---|
+| 20521407 | Nguyễn Văn Huy |---|
