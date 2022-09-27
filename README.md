@@ -10,6 +10,6 @@ Trang Web đọc truyện tranh online
 | --- | ----------- |--------------------|
 | 2052xxxx | Nguyễn Hoàng Khoa (Nhóm trưởng) |---|
 | 20521505 | Trần Ngô Tuấn Kiệt |---|
-| 2052xxxx | Nguyễn Tuấn Kiệt |---|
+| 20521500 | Nguyễn Tuấn Kiệt |---|
 | 2052xxxx | Lê Trung Kiên |---|
 | 20521407 | Nguyễn Văn Huy |---|
