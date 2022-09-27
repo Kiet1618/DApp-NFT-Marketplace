@@ -1,5 +1,5 @@
 # Manga Web
-#### Trang Web đọc truyện tranh online
+Trang Web đọc truyện tranh online
 ### Các chức năng của trang web:
 - ...
 - ...
