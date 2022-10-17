@@ -7,6 +7,7 @@ Trang Web đọc truyện tranh online
 - Uploads truyện dành cho Admin. 
 - Xếp hạng truyện dựa trên lượt yêu thích.
 - Bình luận truyện.
+- Dark mode
 - ....
 # Đồ án môn học IE104
 ## Danh sách thành viên
