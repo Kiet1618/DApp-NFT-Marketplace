@@ -1,14 +1,7 @@
-# Manga Web
-Trang Web đọc truyện tranh online
+# DApp NFT Marketplace
+Trang web một sàn giao dịch NFT phi tập trung
 ### Các chức năng của trang web:
-- Đăng nhập, đăng ký.
-- Theo dõi và tìm kiếm truyện.
-- Phân loại truyện theo thể loại.
-- Uploads truyện dành cho Admin. 
-- Xếp hạng truyện dựa trên lượt yêu thích.
-- Bình luận truyện.
-- Dark mode
-- ....
+
 # Đồ án môn học IE104
 ## Danh sách thành viên
 | MSSV | Họ tên |Nhiệm vụ|
