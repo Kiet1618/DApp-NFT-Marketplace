@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div>
+        <div>
+            <div><input id="contract-address" value="cx7f920f344cc41bc6d3e957c01845a794e61e721d" style="width: 600px;" />
+        </div>
+
+        <div id="connect-Wallet">
+            <button onclick="connectWallet()">Connect Wallet</button>
+            <div id="cn-address"></div>
+        </div>
+        
+
+    <div>
+        <input id="name" type="text" width="700px">
+        <button onclick ="setName()">SetName</button>
+        <button onclick="getName()">GetName</button>
+    </div>
+    <div>
+        <input id="avatar" type="text" width="700px">
+        <button onclick ="setAvatar()">setAvatar</button>
+        <button onclick ="getAvatar()">getAvatar</button>
+    </div>
+    <div>
+        <button onclick="showAll()">show</button>
+    </div>
+
+</body>
+<style>
+    body {
+        padding: 20px;
+        font-size: large;
+    }
+
+    div {
+        margin: 10px;
+    }
+
+    input,
+    button {
+        padding: 10px;
+        font-size: large;
+    }
+    button{
+        cursor: pointer;
+    }
+    .none{
+        display: none;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/icon-sdk-js@latest/build/icon-sdk-js.web.min.js"></script>
+
+<script src="callAPI.js"></script>
+</html>
