@@ -12,15 +12,13 @@
 <body>
     <div>
         <div>
-            <div><input id="contract-   address" value="cx7f920f344cc41bc6d3e957c01845a794e61e721d"
+            <div><input id="contract-address" value="cx7f920f344cc41bc6d3e957c01845a794e61e721d"
                     style="width: 600px;" />
             </div>
 
             <div id="connect-Wallet">
                 <button onclick="connectWallet()">Connect Wallet</button>
-                <div id="cn-address"></div>
             </div>
-
             <div>
                 <button onclick="getPublicNFTs()">All NFT</button>
             </div>
@@ -35,8 +33,60 @@
                 <button onclick="getAvatar()">getAvatar</button>
             </div>
             <div>
+                <button onclick="getUsers()">getUsers</button>
+            </div>
+            <div>
+                <button onclick="getUserCustomCollections()">getUserCustomCollections</button>
+            </div>
+            <div>
+                <button onclick="getPublicCollections()">getPublicCollections</button>
+            </div>
+            <div>
+                <button onclick="getUserPublicCustomCollections()"> getUserPublicCustomCollections</button>
+            </div>
+            <div>
+                <input id="CollectionPublicNFTs" type="text" width="700px">
+                <button onclick="getCollectionPublicNFTs()">getCollectionPublicNFTs</button>
+            </div>
+            <div>
+                <input id="CollectionNFTs" type="text" width="700px">
+                <button onclick="getCollectionNFTs()">getCollectionNFTs</button>
+            </div>
+            <div>
+                <input id="NFT" type="text" width="700px">
+                <button onclick="getNFTCurrentOwner()">getNFTCurrentOwner</button>
+            </div>
+            <div>
+                <input id="NFTInfo" type="text" width="700px">
+                <button onclick="getNFTInfo()">getNFTInfo</button>
+            </div>
+        
+            
+            <div>
                 <button onclick="showAll()">show</button>
             </div>
+            <div>------------------------------------------------------------</div>
+            <div>
+                <label for="ipfs">link anh</label>
+                <input id="ipfs" type="text">
+              </div>
+            <div>
+              <label for="price">Price</label>
+              <input id="price" type="number">
+            </div>
+            <div>
+              <label for="description">Description</label>
+              <input id="description" type="text">
+            </div>
+            <div>
+                        <label for="onSale">On Sale</label>
+                        <input id="onSale" type="checkbox">
+                        <label for="visibility">Visibility</label>
+                        <input id="visibility" type="checkbox">
+                </div>
+                  <button onclick="createNFT()">Submit</button>
+              <div>------------------------------------------------------------</div>
+
 
 </body>
 <style>
@@ -71,46 +121,540 @@
     const iconService = new IconService(httpProvider);
 
 
-    //NOTE cho nhom lam WEB front-end
-    var myAddress;  //Địa chỉ ví của user
-    var adminAddress = "hx69b66d24eacd8c6417f9fc2d307970f877524bd0"; // Địa chỉ ví của tao
-    var nameUser; // Tên User (String)
-    var avatar; // Ảnh đại diện (String)
-    var allPublicNFTs; // Tất cả ảnh NFT public (kiểu mảng chuôi ["anh1.png", "anh2.png"] )
+//NOTE cho nhom lam WEB front-end
+var myAddress;  //Địa chỉ ví của user
+var adminAddress = "hx69b66d24eacd8c6417f9fc2d307970f877524bd0"; // Địa chỉ ví của tao
+var nameUser; // Tên User (String)
+var avatar; // Ảnh đại diện (String)
+var allPublicNFTs; // Tất cả ảnh NFT public (kiểu mảng chuôi ["anh1.png", "anh2.png"] )
+var allUsers;
+var userCustomCollections;
+var publicCollections;
+var userPublicCustomCollections;
+var collectionPublicNFTs;
+var collectionNFTs;
+var NFTCurrentOwner;
+var NFTInfo;
 
+function showAll() {
+    console.log(document.getElementById('onSale').checked)
+    console.log(adminAddress);
+    console.log(myAddress);
+    console.log(nameUser);
+    console.log(avatar);
+    console.log(allPublicNFTs);
+    console.log(allUsers);
+    console.log(userCustomCollections);
+    console.log(publicCollections);
+    console.log(userPublicCustomCollections);
+    console.log(collectionPublicNFTs);
+    console.log(collectionNFTs);
+    console.log(NFTCurrentOwner);
+    console.log(NFTInfo);
+}
+//connect wallet
+var contractAddress = "cx7f920f344cc41bc6d3e957c01845a794e61e721d";
+function connectWallet() {
+    const connectWalletEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_ADDRESS'
+        }
+    });
+    window.dispatchEvent(connectWalletEvent);
 
-
-    function showAll() {
-        console.log(adminAddress);
-        console.log(myAddress);
-        console.log(nameUser);
-        console.log(avatar);
-        console.log(allPublicNFTs);
+    const eventHandler = event => {  
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_ADDRESS') {
+            myAddress = payload;
+            getName();
+        }
     }
-    //connect wallet
-    var contractAddress = "cx7f920f344cc41bc6d3e957c01845a794e61e721d";
-    function connectWallet() {
-        const connectWalletEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-            detail: {
-                type: 'REQUEST_ADDRESS'
-            }
-        });
-        window.dispatchEvent(connectWalletEvent);
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
 
-        const eventHandler = event => {  
-            const { type, payload } = event.detail;
-            if (type === 'RESPONSE_ADDRESS') {
-                myAddress = payload;
-                getName();
+//icx_sendTransaction
+
+function setName() {
+    const setNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_sendTransaction",
+                id: 6339,
+                params: {
+                    nid: "0x53",
+                    timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
+                    version: "0x3",
+                    from: myAddress, // TX sender address
+                    stepLimit: "2500000000",
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "setName", // SCORE external function
+                        params: { _user: myAddress, _name: document.getElementById('name').value }
+                    }
+                }
             }
         }
-        window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+    });
+    window.dispatchEvent(setNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            //  
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+}
+
+function setAvatar() {
+    const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_sendTransaction",
+                id: 6339,
+                params: {
+                    nid: "0x53",
+                    timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
+                    version: "0x3",
+                    from: myAddress, // TX sender address
+                    // value: "0xde0b6b3a7640000",
+                    stepLimit: "2500000000",
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "setAvatar", // SCORE external function
+                        params: { _user: myAddress, _img: document.getElementById('avatar').value }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(setAvatarEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            //  
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+
+//icxcall
+
+function getName() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: myAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getName", // SCORE external function
+                        params: { _user: myAddress }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            nameUser = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getPublicNFTs() {
+    const getNFTsEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 12,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getPublicNFTs", // SCORE external function
+                        params: {}
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNFTsEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            console.log(payload);
+            allPublicNFTs = payload.result;
+
+
+            }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+            reject();
+        }
     }
 
-    //icx_sendTransaction
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
 
-    function setName() {
-        const setNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+}
+function getPublicCollections() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 12,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getPublicCollections", // SCORE external function
+                        params: {}
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            console.log(payload);
+            publicCollections = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+
+function getUsers() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getUsers", // SCORE external function
+                        params: {}
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            allUsers = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+
+function getAvatar() {
+    const getAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: myAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getAvatar", // SCORE external function
+                        params: { _user: myAddress }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getAvatarEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            avatar = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request')
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getUserCustomCollections() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: myAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getUserCustomCollections", // SCORE external function
+                        params: { _user: myAddress }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            userCustomCollections = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getUserPublicCustomCollections() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: myAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getUserPublicCustomCollections", // SCORE external function
+                        params: { _user: myAddress }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            userPublicCustomCollections = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getCollectionPublicNFTs() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getCollectionPublicNFTs", // SCORE external function
+                        params: { _collection: document.getElementById('CollectionPublicNFTs').value }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            collectionPublicNFTs = payload.result;
+            return collectionNFTs;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getCollectionNFTs() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getCollectionNFTs", // SCORE external function
+                        params: { _collection: document.getElementById('CollectionNFTs').value }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            CollectionNFTs = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getNFTCurrentOwner() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getNFTCurrentOwner", // SCORE external function
+                        params: { _nft: document.getElementById('NFT').value, _timestamp: "1" }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            console.log(payload);
+            NFTCurrentOwner = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function getNFTInfo() {
+    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_call",
+                id: 6339,
+                params: {
+                    from: adminAddress, // TX sender address
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "getNFTInfo", // SCORE external function
+                        params: { _nft: document.getElementById('NFTInfo').value, _timestamp: "1" }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(getNameEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+
+        const { type, payload } = event.detail;
+        if (type === 'RESPONSE_JSON-RPC') {
+            console.log(payload);
+            NFTInfo = payload.result;
+        }
+        else if (type === 'CANCEL_JSON-RPC') {
+            console.error('User cancelled JSON-RPC request');
+        }
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+    //////////////////////////////////////////////////////
+}
+function createNFT() {
+    var onSale;
+    var visibility;
+    if(document.getElementById('onSale').checked){
+        onSale = "1";
+    }
+    else{
+        onSale = "0";
+    }
+    if(document.getElementById('visibility').checked){
+        visibility = "1";
+    }
+    else{
+        visibility = "0";
+    }
+        const createNFTEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
             detail: {
                 type: 'REQUEST_JSON-RPC',
                 payload: {
@@ -126,171 +670,20 @@
                         to: contractAddress,   // SCORE address
                         dataType: "call",
                         data: {
-                            method: "setName", // SCORE external function
-                            params: { _user: myAddress, _name: document.getElementById('name').value }
+                            method: "createNFT", // SCORE external function
+                            params: { _user: myAddress, _ipfs: document.getElementById('ipfs').value, _price: document.getElementById('price').value ,_description: document.getElementById('description').value ,   _visibility: visibility, _onSale: onSale }
                         }
                     }
                 }
             }
         });
-        window.dispatchEvent(setNameEvent);
+        window.dispatchEvent(createNFTEvent);
         const eventHandler = event => {
             window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-            const { type, payload } = event.detail;
-            if (type === 'RESPONSE_JSON-RPC') {
-                //  
-            }
-            else if (type === 'CANCEL_JSON-RPC') {
-                console.error('User cancelled JSON-RPC request');
-            }
-        }
-        window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-    }
-
-    function setAvatar() {
-        const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-            detail: {
-                type: 'REQUEST_JSON-RPC',
-                payload: {
-                    jsonrpc: "2.0",
-                    method: "icx_sendTransaction",
-                    id: 6339,
-                    params: {
-                        nid: "0x53",
-                        timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
-                        version: "0x3",
-                        from: myAddress, // TX sender address
-                        // value: "0xde0b6b3a7640000",
-                        stepLimit: "2500000000",
-                        to: contractAddress,   // SCORE address
-                        dataType: "call",
-                        data: {
-                            method: "setAvatar", // SCORE external function
-                            params: { _user: myAddress, _img: document.getElementById('avatar').value }
-                        }
-                    }
-                }
-            }
-        });
-        window.dispatchEvent(setAvatarEvent);
-        const eventHandler = event => {
-            window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-            const { type, payload } = event.detail;
-            if (type === 'RESPONSE_JSON-RPC') {
-                //  
-            }
-            else if (type === 'CANCEL_JSON-RPC') {
-                console.error('User cancelled JSON-RPC request');
-            }
-        }
-        window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-    }
-
-    //icxcall
-
-    function getName() {
-        const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-            detail: {
-                type: 'REQUEST_JSON-RPC',
-                payload: {
-                    jsonrpc: "2.0",
-                    method: "icx_call",
-                    id: 6339,
-                    params: {
-                        from: myAddress, // TX sender address
-                        to: contractAddress,   // SCORE address
-                        dataType: "call",
-                        data: {
-                            method: "getName", // SCORE external function
-                            params: { _user: myAddress }
-                        }
-                    }
-                }
-            }
-        });
-        window.dispatchEvent(getNameEvent);
-        const eventHandler = event => {
-            window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-            const { type, payload } = event.detail;
-            if (type === 'RESPONSE_JSON-RPC') {
-                nameUser = payload.result;
-            }
-            else if (type === 'CANCEL_JSON-RPC') {
-                console.error('User cancelled JSON-RPC request');
-            }
-        }
-        window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-    }
-
-
-
-    function getAvatar() {
-        const getAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-            detail: {
-                type: 'REQUEST_JSON-RPC',
-                payload: {
-                    jsonrpc: "2.0",
-                    method: "icx_call",
-                    id: 6339,
-                    params: {
-                        from: myAddress, // TX sender address
-                        to: contractAddress,   // SCORE address
-                        dataType: "call",
-                        data: {
-                            method: "getAvatar", // SCORE external function
-                            params: { _user: myAddress }
-                        }
-                    }
-                }
-            }
-        });
-        window.dispatchEvent(getAvatarEvent);
-        const eventHandler = event => {
-            window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-            const { type, payload } = event.detail;
-            if (type === 'RESPONSE_JSON-RPC') {
-                avatar = payload.result;
-            }
-            else if (type === 'CANCEL_JSON-RPC') {
-                console.error('User cancelled JSON-RPC request')
-            }
-        }
-        window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-    }
-
-
-
-    function getPublicNFTs() {
-        const getNFTsEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-            detail: {
-                type: 'REQUEST_JSON-RPC',
-                payload: {
-                    jsonrpc: "2.0",
-                    method: "icx_call",
-                    id: 6329,
-                    params: {
-                        from: adminAddress, // TX sender address
-                        to: contractAddress,   // SCORE address
-                        dataType: "call",
-                        data: {
-                            method: "getPublicNFTs", // SCORE external function
-                            params: {}
-                        }
-                    }
-                }
-            }
-        });
-        window.dispatchEvent(getNFTsEvent);
-        const eventHandler = event => {
-            window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+    
             const { type, payload } = event.detail;
             if (type === 'RESPONSE_JSON-RPC') {
                 console.log(payload);
-                allPublicNFTs = payload.result;
             }
             else if (type === 'CANCEL_JSON-RPC') {
                 console.error('User cancelled JSON-RPC request');
