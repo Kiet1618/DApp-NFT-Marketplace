@@ -38,7 +38,7 @@ function connectWallet() {
         const { type, payload } = event.detail;
         if (type === 'RESPONSE_ADDRESS') {
             myAddress = payload;
-            //  getName();
+        
         }
     }
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
@@ -429,6 +429,37 @@ function sendBid() {
                     data: {
                         method: "sendBid", // SCORE external function
                         params: { _user: myAddress, _nft: document.getElementById('nft').value, _bid: document.getElementById('price').value  }
+                    }
+                }
+            }
+        }
+    });
+    window.dispatchEvent(setAvatarEvent);
+    const eventHandler = event => {
+        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+    }
+    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+}
+function addToCart() {
+    const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
+        detail: {
+            type: 'REQUEST_JSON-RPC',
+            payload: {
+                jsonrpc: "2.0",
+                method: "icx_sendTransaction",
+                id: 6339,
+                params: {
+                    nid: "0x53",
+                    timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
+                    version: "0x3",
+                    from: myAddress, // TX sender address
+                    // value: "0xde0b6b3a7640000",
+                    stepLimit: "2500000000",
+                    to: contractAddress,   // SCORE address
+                    dataType: "call",
+                    data: {
+                        method: "addToCart", // SCORE external function
+                        params: {_user: myAddress, _nft: document.getElementById('nft-collection').value }
                     }
                 }
             }
