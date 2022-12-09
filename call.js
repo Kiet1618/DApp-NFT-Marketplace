@@ -455,7 +455,7 @@ const getUsers = async () => {
 }
 const getNFTInfo = async (_nft) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getNFTInfo')
         .params({
             _nft: _nft,
@@ -478,7 +478,7 @@ const getPublicNFTs = async () => {
 }
 const getPublicCollections = async () => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getPublicCollections')
         .params({})
         .build()
@@ -509,7 +509,7 @@ const getAvatar = async (_user) => {
 }
 const getUserCollections = async (_user) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getUserCollections')
         .params({
             _user: _user
@@ -521,7 +521,7 @@ const getUserCollections = async (_user) => {
 }
 const getUserCustomCollections = async (_user) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getUserCustomCollections')
         .params({
             _user: _user
@@ -534,7 +534,7 @@ const getUserCustomCollections = async (_user) => {
 
 const getUserPublicCustomCollections = async (_user) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getUserPublicCustomCollections')
         .params({
             _user: _user
@@ -546,7 +546,7 @@ const getUserPublicCustomCollections = async (_user) => {
 }
 const getCollectionNFTs = async (_collection) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getCollectionNFTs')
         .params({
             _collection: _collection
@@ -558,7 +558,7 @@ const getCollectionNFTs = async (_collection) => {
 }
 const getCollectionPublicNFTs = async (_collection) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getCollectionPublicNFTs')
         .params({
             _collection: _collection
@@ -570,7 +570,7 @@ const getCollectionPublicNFTs = async (_collection) => {
 }
 const getCollectionInfo = async (_collection) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('getCollectionInfo')
         .params({
             _collection: _collection
@@ -582,7 +582,7 @@ const getCollectionInfo = async (_collection) => {
 }
 const balance = async (_user) => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('balance')
         .params({
             _user: _user
@@ -594,7 +594,7 @@ const balance = async (_user) => {
 }
 const value = async () => {
     const call = new CallBuilder()
-        .to(process.env.REACT_APP_SCORE_ADDRESS)
+        .to(contractAddress)
         .method('value')
         .params({})
         .build()
