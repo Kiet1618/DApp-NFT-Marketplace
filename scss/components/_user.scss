@@ -1,0 +1,159 @@
+//===Users===
+
+.users{
+    margin-bottom: 160px;
+
+    .users__h-flex{
+        margin-bottom: 50px;
+    }
+
+    .user__user-card{
+        .card-flex__item__img{
+            width: 100%;
+        }
+
+        .user-card__flex{
+            margin-top: -100px;
+        }
+    }
+}
+
+.user-card{    
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) -1.52%, rgba(255, 255, 255, 0.024) 104.35%);
+    backdrop-filter: blur(39.6002px);
+
+    .user-card__flex{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+            
+        padding: 0 39px 40px;
+    
+        .user_card__ava{
+            margin-bottom: 15px;
+        }
+    
+        h3{
+            font-family: 'Rajdhani';
+            font-weight: 500;
+            font-size: 24.3201px;
+            line-height: 46px;
+        }
+    
+        .user-card__profile{
+            display: flex;
+            align-items: center;
+            margin-bottom: 35px;
+    
+            span{
+                font-family: 'Rajdhani';
+                font-weight: 400;
+                font-size: 20.1601px;
+                line-height: 46px;
+                color: #FFB1EE;
+            }
+    
+            img{
+                height: 100%;
+                margin-left: 5px;
+            }
+        }
+    
+        .user-card__statistic{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+    
+            margin-bottom: 25px;
+    
+            .user-card__statistic__column{
+                font-family: 'Rajdhani';
+                font-weight: 500;
+                font-size: 19.8061px;
+                line-height: 30px;
+                opacity: 0.7;
+
+                margin: 0 5px;
+    
+                span{
+                    font-family: 'Rajdhani';
+                    font-weight: 600;
+                    font-size: 31.6897px;
+                    line-height: 30px;
+                }
+            }
+        }
+    
+        button{
+            font-family: 'Rajdhani';
+            font-weight: 600;
+            font-size: 19.8983px;
+            line-height: 25px;
+    
+            padding: 11px 75px;
+        }
+    }
+}
+
+.explore-block{
+    display: none;
+    justify-content: center;
+
+    margin-top: 45px;
+
+    .explore{
+        display: flex;
+        align-items: center;
+        background: none;
+
+        position: relative;
+
+        padding: 9px 30px 12px 40px;
+
+        box-shadow: 0px 2.35945px 57.2166px rgba(255, 86, 246, 0.51);
+       // backdrop-filter: blur(56.6267px);
+        border-radius: 1.17972px;
+
+        clip-path: polygon(40px 0,100% 0,100% calc(100% - 20px), calc(100% - 40px) 100%,0 100%,0 20px);
+
+        //clip-path: polygon(40px 0,100% 0,100% calc(100% - 20px), calc(100% - 40px) 100%,0 100%,0 20px);
+        border: solid 2px #FFA6FA;
+
+        span{
+            font-family: 'Orbitron';
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 15px;
+            color: #FFFFFF;
+        }
+    
+        svg{margin-left: 4px;}
+    }
+
+    .explore:before {
+        border: solid 2px #FFA6FA;
+        width: 25px;
+        height: 120px;
+        content: '';
+        position: absolute;
+        z-index: 10;
+
+        transform: rotate(63deg);
+        left: -16px;
+        top: -53px;
+    }
+
+    .explore::after {
+        border: solid 2px #FFA6FA;
+        width: 25px;
+        height: 120px;
+        content: '';
+        position: absolute;
+        z-index: 10;
+
+        transform: rotate(63deg);
+        right: -16px;
+        bottom: -53px;
+    }
+}

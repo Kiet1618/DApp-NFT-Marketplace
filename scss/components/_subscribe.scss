@@ -1,0 +1,93 @@
+//===Subscribe===
+
+.subscribe{
+    .subscribe__flex{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        margin-bottom: 160px;
+        
+        .subscribe__img{
+            flex-grow: 48%;
+
+            background-image: url('../source/img/subscribe_img.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            border-radius: 4.42184px;
+
+            width: 698.65px;
+            height: 289.63px;
+        }
+
+        .subscribe__info{
+            flex-grow: 48%;
+            margin-left: 15px;
+
+            h1{
+                font-size: 39.7965px;
+                line-height: 50px;
+                font-feature-settings: 'salt' on, 'liga' off;
+
+                margin-bottom: 27px;
+            }
+
+            p{
+                font-family: 'Inter';
+                font-weight: 400;
+                font-size: 19.8983px;
+                line-height: 35px;
+                font-feature-settings: 'salt' on, 'liga' off;
+
+                margin-bottom: 50px;
+                max-width: 500px;
+            }
+
+            .subscribe__form-flex{
+                display: flex;
+                align-items: stretch;
+
+                input{
+                    background: #F4F5F7;
+                    border-radius: 5.5273px 0px 0px 5.5273px;
+
+                    font-family: 'Inter';
+                    font-weight: 400;
+                    font-size: 15.4764px;
+                    line-height: 27px;
+                    font-feature-settings: 'salt' on, 'liga' off;
+                    color: #474A57;
+
+                    padding: 13px 17.5px;
+                    margin-right: 9px;
+                }
+
+                input::placeholder{
+                    font-family: 'Inter';
+                    font-weight: 400;
+                    font-size: 15.4764px;
+                    line-height: 27px;
+                    font-feature-settings: 'salt' on, 'liga' off;
+                    color: #474A57;
+                }
+
+                .subscribe__button{
+                    font-family: 'Inter';
+                    font-weight: 500;
+                    font-size: 15.4764px;
+                    line-height: 22px;
+                    font-feature-settings: 'salt' on, 'liga' off;
+
+                    border-radius: 0px 5.5273px 5.5273px 0px;
+                    padding: 11px 33px 15px;
+
+                    height: 53px;
+
+                    border: solid 2px rgba($color: #FFFFFF, $alpha: 0.7);
+
+                }
+            }
+        }
+    }
+}

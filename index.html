@@ -2,697 +2,1576 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Ocean NFT</title>
 
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="shortcut icon" href="source/img/logo.png" type="image/x-icon" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/95c2c2f254.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+  <script src="https://unpkg.com/viewerjs/dist/viewer.js"></script>
+  <script src="https://unpkg.com/v-viewer/dist/v-viewer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/icon-sdk-js@latest/build/icon-sdk-js.web.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-    <div>
-        <div>
-            <div><input id="contract-address" value="cx7f920f344cc41bc6d3e957c01845a794e61e721d"
-                    style="width: 600px;" />
-            </div>
-
-            <div id="connect-Wallet">
-                <button onclick="connectWallet()">Connect Wallet</button>
-            </div>
-            <div>
-                <button onclick="getPublicNFTs()">All NFT</button>
-            </div>
-            <div>
-                <input id="name" type="text" width="700px">
-                <button onclick="setName()">SetName</button>
-                <button onclick="getName()">GetName</button>
-            </div>
-            <div>
-                <input id="avatar" type="text" width="700px">
-                <button onclick="setAvatar()">setAvatar</button>
-                <button onclick="getAvatar()">getAvatar</button>
-            </div>
-            <div>
-                <button onclick="getUsers()">getUsers</button>
-            </div>
-            <div>
-                <button onclick="getUserCustomCollections()">getUserCustomCollections</button>
-            </div>
-            <div>
-                <button onclick="getPublicCollections()">getPublicCollections</button>
-            </div>
-            <div>
-                <button onclick="getUserPublicCustomCollections()"> getUserPublicCustomCollections</button>
-            </div>
-            <div>
-                <input id="CollectionPublicNFTs" type="text" width="700px">
-                <button onclick="getCollectionPublicNFTs()">getCollectionPublicNFTs</button>
-            </div>
-            <div>
-                <input id="CollectionNFTs" type="text" width="700px">
-                <button onclick="getCollectionNFTs()">getCollectionNFTs</button>
-            </div>
-            <div>
-                <input id="NFT" type="text" width="700px">
-                <button onclick="getNFTCurrentOwner()">getNFTCurrentOwner</button>
-            </div>
-            <div>
-                <input id="NFTInfo" type="text" width="700px">
-                <button onclick="getNFTInfo()">getNFTInfo</button>
-            </div>
-        
-            
-            <div>
-                <button onclick="showAll()">show</button>
-            </div>
-            <div>------------------------------------------------------------</div>
-            <div>
-                <label for="ipfs">link anh</label>
-                <input id="ipfs" type="text">
-              </div>
-            <div>
-              <label for="price">Price</label>
-              <input id="price" type="number">
-            </div>
-            <div>
-              <label for="description">Description</label>
-              <input id="description" type="text">
-            </div>
-            <div>
-                        <label for="onSale">On Sale</label>
-                        <input id="onSale" type="checkbox">
-                        <label for="visibility">Visibility</label>
-                        <input id="visibility" type="checkbox">
-                </div>
-                  <button onclick="createNFT()">Submit</button>
-              <div>------------------------------------------------------------</div>
-
-
-</body>
-<style>
-    body {
-        padding: 20px;
-        font-size: large;
-    }
-
-    div {
-        margin: 10px;
-    }
-
-    input,
-    button {
-        padding: 10px;
-        font-size: large;
-    }
-
-    button {
-        cursor: pointer;
-    }
-
-    .none {
-        display: none;
-    }
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/icon-sdk-js@latest/build/icon-sdk-js.web.min.js"></script>
 <script>
-    const IconService = window['icon-sdk-js'].default;
-    const httpProvider = new IconService.HttpProvider('https://sejong.net.solidwallet.io/api/v3')
-    const iconService = new IconService(httpProvider);
-
-
-//NOTE cho nhom lam WEB front-end
-var myAddress;  //Địa chỉ ví của user
-var adminAddress = "hx69b66d24eacd8c6417f9fc2d307970f877524bd0"; // Địa chỉ ví của tao
-var nameUser; // Tên User (String)
-var avatar; // Ảnh đại diện (String)
-var allPublicNFTs; // Tất cả ảnh NFT public (kiểu mảng chuôi ["anh1.png", "anh2.png"] )
-var allUsers;
-var userCustomCollections;
-var publicCollections;
-var userPublicCustomCollections;
-var collectionPublicNFTs;
-var collectionNFTs;
-var NFTCurrentOwner;
-var NFTInfo;
-
-function showAll() {
-    console.log(document.getElementById('onSale').checked)
-    console.log(adminAddress);
-    console.log(myAddress);
-    console.log(nameUser);
-    console.log(avatar);
-    console.log(allPublicNFTs);
-    console.log(allUsers);
-    console.log(userCustomCollections);
-    console.log(publicCollections);
-    console.log(userPublicCustomCollections);
-    console.log(collectionPublicNFTs);
-    console.log(collectionNFTs);
-    console.log(NFTCurrentOwner);
-    console.log(NFTInfo);
-}
-//connect wallet
-var contractAddress = "cx7f920f344cc41bc6d3e957c01845a794e61e721d";
-function connectWallet() {
-    const connectWalletEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_ADDRESS'
-        }
-    });
-    window.dispatchEvent(connectWalletEvent);
-
-    const eventHandler = event => {  
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_ADDRESS') {
-            myAddress = payload;
-            getName();
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-
-//icx_sendTransaction
-
-function setName() {
-    const setNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_sendTransaction",
-                id: 6339,
-                params: {
-                    nid: "0x53",
-                    timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
-                    version: "0x3",
-                    from: myAddress, // TX sender address
-                    stepLimit: "2500000000",
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "setName", // SCORE external function
-                        params: { _user: myAddress, _name: document.getElementById('name').value }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(setNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            //  
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-}
-
-function setAvatar() {
-    const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_sendTransaction",
-                id: 6339,
-                params: {
-                    nid: "0x53",
-                    timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
-                    version: "0x3",
-                    from: myAddress, // TX sender address
-                    // value: "0xde0b6b3a7640000",
-                    stepLimit: "2500000000",
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "setAvatar", // SCORE external function
-                        params: { _user: myAddress, _img: document.getElementById('avatar').value }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(setAvatarEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            //  
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-
-//icxcall
-
-function getName() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: myAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getName", // SCORE external function
-                        params: { _user: myAddress }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            nameUser = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getPublicNFTs() {
-    const getNFTsEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 12,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getPublicNFTs", // SCORE external function
-                        params: {}
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNFTsEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            console.log(payload);
-            allPublicNFTs = payload.result;
-
-
-            }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-            reject();
-        }
-    }
-
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-}
-function getPublicCollections() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 12,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getPublicCollections", // SCORE external function
-                        params: {}
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            console.log(payload);
-            publicCollections = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-
-function getUsers() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getUsers", // SCORE external function
-                        params: {}
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            allUsers = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-
-function getAvatar() {
-    const getAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: myAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getAvatar", // SCORE external function
-                        params: { _user: myAddress }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getAvatarEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            avatar = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request')
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getUserCustomCollections() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: myAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getUserCustomCollections", // SCORE external function
-                        params: { _user: myAddress }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            userCustomCollections = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getUserPublicCustomCollections() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: myAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getUserPublicCustomCollections", // SCORE external function
-                        params: { _user: myAddress }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            userPublicCustomCollections = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getCollectionPublicNFTs() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getCollectionPublicNFTs", // SCORE external function
-                        params: { _collection: document.getElementById('CollectionPublicNFTs').value }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            collectionPublicNFTs = payload.result;
-            return collectionNFTs;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getCollectionNFTs() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getCollectionNFTs", // SCORE external function
-                        params: { _collection: document.getElementById('CollectionNFTs').value }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            CollectionNFTs = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getNFTCurrentOwner() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getNFTCurrentOwner", // SCORE external function
-                        params: { _nft: document.getElementById('NFT').value, _timestamp: "1" }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            console.log(payload);
-            NFTCurrentOwner = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-}
-function getNFTInfo() {
-    const getNameEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-        detail: {
-            type: 'REQUEST_JSON-RPC',
-            payload: {
-                jsonrpc: "2.0",
-                method: "icx_call",
-                id: 6339,
-                params: {
-                    from: adminAddress, // TX sender address
-                    to: contractAddress,   // SCORE address
-                    dataType: "call",
-                    data: {
-                        method: "getNFTInfo", // SCORE external function
-                        params: { _nft: document.getElementById('NFTInfo').value, _timestamp: "1" }
-                    }
-                }
-            }
-        }
-    });
-    window.dispatchEvent(getNameEvent);
-    const eventHandler = event => {
-        window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-
-        const { type, payload } = event.detail;
-        if (type === 'RESPONSE_JSON-RPC') {
-            console.log(payload);
-            NFTInfo = payload.result;
-        }
-        else if (type === 'CANCEL_JSON-RPC') {
-            console.error('User cancelled JSON-RPC request');
-        }
-    }
-    window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-    //////////////////////////////////////////////////////
-}
-function createNFT() {
-    var onSale;
-    var visibility;
-    if(document.getElementById('onSale').checked){
-        onSale = "1";
-    }
-    else{
-        onSale = "0";
-    }
-    if(document.getElementById('visibility').checked){
-        visibility = "1";
-    }
-    else{
-        visibility = "0";
-    }
-        const createNFTEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
-            detail: {
-                type: 'REQUEST_JSON-RPC',
-                payload: {
-                    jsonrpc: "2.0",
-                    method: "icx_sendTransaction",
-                    id: 6339,
-                    params: {
-                        nid: "0x53",
-                        timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
-                        version: "0x3",
-                        from: myAddress, // TX sender address
-                        stepLimit: "2500000000",
-                        to: contractAddress,   // SCORE address
-                        dataType: "call",
-                        data: {
-                            method: "createNFT", // SCORE external function
-                            params: { _user: myAddress, _ipfs: document.getElementById('ipfs').value, _price: document.getElementById('price').value ,_description: document.getElementById('description').value ,   _visibility: visibility, _onSale: onSale }
-                        }
-                    }
-                }
-            }
-        });
-        window.dispatchEvent(createNFTEvent);
-        const eventHandler = event => {
-            window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-    
-            const { type, payload } = event.detail;
-            if (type === 'RESPONSE_JSON-RPC') {
-                console.log(payload);
-            }
-            else if (type === 'CANCEL_JSON-RPC') {
-                console.error('User cancelled JSON-RPC request');
-            }
-        }
-        window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
-    }
-
-
+  window.onload = function () {
+    document.body.classList.add("loaded_hiding");
+    window.setTimeout(function () {
+      document.body.classList.add("loaded");
+      document.body.classList.remove("loaded_hiding");
+    }, 500);
+  };
 </script>
+
+<body>
+  <div class="preloader">
+    <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor"
+        d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+      </path>
+    </svg>
+  </div>
+
+  <div class="decoration">
+    <div class="circule c1"></div>
+    <div class="circule c2"></div>
+    <div class="circule c3"></div>
+    <div class="circule c4"></div>
+    <div class="circule c5"></div>
+    <div class="circule c6"></div>
+    <div class="circule c7"></div>
+  </div>
+
+  <div class="wrapper">
+    <header class="header">
+      <div class="_content">
+        <div class="header__flex">
+          <div class="logo header__logo">
+            <img src="source/img/icons8-nft-100.png" alt="logo" />
+            <span class="logo__text_ocean">Dapp</span>
+            <span class="logo__text_NFT">NFT</span>
+          </div>
+
+          <ul class="menu header__menu">
+            <a href="#top-NFT">
+              <li class="menu__item">
+                <a href="">Explore</a>
+                <ul class="subnav">
+                  <li><a href="">NFTs</a></li>
+                  <li><a href="">Collections</a></li>
+                  <li><a href="">User</a></li>
+                </ul>
+              </li>
+            </a>
+            <a href="createNFT.html">
+              <li class="menu__item">Create</li>
+            </a>
+            <a href="blog.html">
+              <li class="menu__item">Blog</li>
+            </a>
+          </ul>
+
+          <div class="icons header__icons">
+            <a href="profile.html">
+              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M4.71008 6.23486H21.2247C21.5594 6.23488 21.8903 6.30501 22.1961 6.44073C22.502 6.57646 22.776 6.77477 23.0006 7.02289C23.2251 7.271 23.3951 7.56341 23.4998 7.88127C23.6044 8.19913 23.6412 8.53538 23.6079 8.86834L22.8894 16.0538C22.8303 16.6448 22.5537 17.1928 22.1133 17.5914C21.6729 17.9899 21.1001 18.2106 20.5062 18.2107H9.06928C8.51536 18.2109 7.97849 18.0191 7.55008 17.668C7.12167 17.3169 6.82819 16.8281 6.71962 16.285L4.71008 6.23486Z"
+                  stroke="black" stroke-width="2.21092" stroke-linejoin="round" />
+                <path
+                  d="M4.71011 6.23466L3.74007 2.3509C3.6752 2.09193 3.52565 1.86206 3.31518 1.69781C3.10471 1.53356 2.84539 1.44434 2.57842 1.44434H1.11737"
+                  stroke="black" stroke-width="2.21092" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8.30286 23.0007H10.6973" stroke="black" stroke-width="2.21092" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M17.8835 23.0007H20.2779" stroke="black" stroke-width="2.21092" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+
+            <!-- <a href="profile.html">
+                <svg
+                  width="23"
+                  height="23"
+                  viewBox="0 0 23 23"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.4208 21.1717C16.9155 21.1717 21.37 16.7173 21.37 11.2226C21.37 5.72788 16.9155 1.27343 11.4208 1.27343C5.92612 1.27343 1.47167 5.72788 1.47167 11.2226C1.47167 16.7173 5.92612 21.1717 11.4208 21.1717ZM11.4208 22.2772C17.5263 22.2772 22.4754 17.328 22.4754 11.2226C22.4754 5.11712 17.5263 0.167969 11.4208 0.167969C5.31536 0.167969 0.366211 5.11712 0.366211 11.2226C0.366211 17.328 5.31536 22.2772 11.4208 22.2772Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M4.78809 17.6508C4.78809 17.0799 5.21479 16.5973 5.783 16.5343C10.0473 16.0623 12.8137 16.1048 17.0686 16.5448C17.2811 16.5671 17.4825 16.6508 17.6482 16.7857C17.8139 16.9206 17.9367 17.1008 18.0016 17.3043C18.0666 17.5079 18.0709 17.7259 18.0139 17.9318C17.957 18.1377 17.8413 18.3226 17.6811 18.4639C12.6595 22.841 9.78974 22.7807 5.14183 18.4683C4.91521 18.2583 4.78809 17.9598 4.78809 17.6514V17.6508Z"
+                    fill="black"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M17.0115 17.0945C12.7903 16.6578 10.0637 16.6169 5.843 17.084C5.5589 17.1155 5.34057 17.3581 5.34057 17.6516C5.34057 17.8097 5.40635 17.9595 5.51744 18.0634C7.82122 20.2003 9.56675 21.1659 11.273 21.172C12.9854 21.1781 14.8249 20.2202 17.3177 18.0479C17.3969 17.9775 17.4539 17.8855 17.4818 17.7832C17.5097 17.6809 17.5073 17.5727 17.4748 17.4718C17.4424 17.3709 17.3813 17.2815 17.2991 17.2146C17.2168 17.1478 17.1169 17.1062 17.0115 17.095V17.0945ZM5.72195 15.9852C10.031 15.5082 12.8378 15.5513 17.1259 15.9951C17.4455 16.0285 17.7485 16.1543 17.9977 16.3572C18.247 16.5601 18.4316 16.8313 18.5291 17.1375C18.6266 17.4438 18.6327 17.7718 18.5466 18.0814C18.4605 18.3911 18.2861 18.6689 18.0445 18.8809C15.5158 21.0852 13.4099 22.2857 11.2697 22.2774C9.12346 22.2697 7.11041 21.0487 4.76628 18.8737C4.59845 18.7174 4.46466 18.5281 4.37326 18.3178C4.28187 18.1074 4.23484 17.8805 4.23511 17.6511C4.2343 17.239 4.38557 16.8411 4.65992 16.5336C4.93427 16.2261 5.31243 16.0306 5.72195 15.9846V15.9852Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M15.8425 9.01168C15.8425 10.1844 15.3766 11.3091 14.5473 12.1384C13.7181 12.9677 12.5934 13.4335 11.4206 13.4335C10.2479 13.4335 9.12316 12.9677 8.29391 12.1384C7.46465 11.3091 6.99878 10.1844 6.99878 9.01168C6.99878 7.83894 7.46465 6.71423 8.29391 5.88497C9.12316 5.05571 10.2479 4.58984 11.4206 4.58984C12.5934 4.58984 13.7181 5.05571 14.5473 5.88497C15.3766 6.71423 15.8425 7.83894 15.8425 9.01168Z"
+                    fill="black"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.4206 12.3281C12.3002 12.3281 13.1437 11.9787 13.7657 11.3567C14.3876 10.7348 14.737 9.89124 14.737 9.01168C14.737 8.13213 14.3876 7.28859 13.7657 6.66665C13.1437 6.04471 12.3002 5.6953 11.4206 5.6953C10.5411 5.6953 9.69753 6.04471 9.07558 6.66665C8.45364 7.28859 8.10424 8.13213 8.10424 9.01168C8.10424 9.89124 8.45364 10.7348 9.07558 11.3567C9.69753 11.9787 10.5411 12.3281 11.4206 12.3281ZM11.4206 13.4335C12.5934 13.4335 13.7181 12.9677 14.5473 12.1384C15.3766 11.3091 15.8425 10.1844 15.8425 9.01168C15.8425 7.83894 15.3766 6.71423 14.5473 5.88497C13.7181 5.05571 12.5934 4.58984 11.4206 4.58984C10.2479 4.58984 9.12316 5.05571 8.29391 5.88497C7.46465 6.71423 6.99878 7.83894 6.99878 9.01168C6.99878 10.1844 7.46465 11.3091 8.29391 12.1384C9.12316 12.9677 10.2479 13.4335 11.4206 13.4335Z"
+                    fill="black"
+                  />
+                </svg>
+              </a> -->
+            <button onclick="connectWallet()">Connect Wallet</button>
+          </div>
+
+          <div class="burger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+              <span></span>
+            </label>
+
+            <ul class="menubox">
+              <li>
+                <a class="menu-item" href="#">Explore</a>
+                <ul class="subnav">
+                  <li><a href="">NFTs</a></li>
+                  <li><a href="">Collections</a></li>
+                  <li><a href="">User</a></li>
+                </ul>
+              </li>
+              <li><a class="menu-item" href="#">Create</a></li>
+              <li><a class="menu-item" href="#">Blog</a></li>
+              <!-- <li><a class="menu-item" href="#">Cart</a></li>
+                <li><a class="menu-item" href="#">Profile</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="main__flex _content">
+        <div class="info main__info">
+          <h1>Beautiful<span>NFTs</span>for everyone</h1>
+
+          <p>
+            Rarible is a multi-chain marketplace that aggregates every NFT
+            into a single platform.
+          </p>
+
+          <div class="info__buttons">
+            <a href="#">
+              <button class="button button_border-slesh">
+                <span>Explore</span>
+
+                <svg width="53" height="17" viewBox="0 0 53 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M43.3723 14.101L48.8995 8.57366L43.3723 3.04637L44.4777 0.835449L52.2159 8.57366L44.4777 16.3119L43.3723 14.101Z"
+                    fill="white" />
+                  <line x1="48.8995" y1="8.57372" x2="0.259327" y2="8.57372" stroke="white" stroke-width="2.21092" />
+                </svg>
+              </button>
+            </a>
+
+            <a class="info__create" href="#"> Create NFT’s </a>
+          </div>
+
+          <div class="statistic info__statistic">
+            <div class="statistic__item">
+              <h2>35m+</h2>
+              <h5>Artwork</h5>
+            </div>
+
+            <div class="statistic__line"></div>
+
+            <div class="statistic__item">
+              <h2>18m+</h2>
+              <h5>Auctions</h5>
+            </div>
+
+            <div class="statistic__line"></div>
+
+            <div class="statistic__item">
+              <h2>500k+</h2>
+              <h5>Artists</h5>
+            </div>
+          </div>
+        </div>
+        <div class="main__NFT">
+          <div class="image_container" id="imgs">
+            <img src="source/img/slider_1.png" alt="first-image" />
+            <img src="source/img/slider_2.png" alt="second-image" />
+            <img src="source/img/slider_3.png" alt="third-image" />
+            <img src="source/img/slider_4.png" alt="fourth-image" />
+            <img src="source/img/slider_5.png" alt="fifth-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection__NFT">
+      <div class="_content">
+        <div class="h-flex ">
+          <h2>Hot Collections</h2>
+
+          <a href="#">
+            <div class="top-NFT__view-all">
+              <span>View all</span>
+
+              <svg width="53" height="27" viewBox="0 0 53 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5188 13.582L50.3153 13.582" stroke="white" stroke-width="1.65819" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M42.5771 5.84375L50.3154 13.582L42.5771 21.3202" stroke="white" stroke-width="1.65819"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </a>
+        </div>
+        <div class="container">
+          <div class="collection__item">
+            <div class="collection__user">
+              <img src="source/img/user_1.avif" alt="user" />
+              <span class="name__user">Art Blocks Factory</span>
+            </div>
+
+            <!-- collection_list -->
+            <div class="collection_list">
+              
+            </div>
+          </div>
+          <div class="collection__item">
+            <div class="collection__user">
+              <img src="source/img/user_2.avif" alt="user" />
+              <span class="name__user">Bored Ape Yacht Club</span>
+            </div>
+            <div class="collection_list"></div>
+          </div>
+          <div class="collection__item">
+            <div class="collection__user">
+              <img src="source/img/user_3.avif" alt="user" />
+              <span class="name__user">Noble Cards: Season One</span>
+            </div>
+
+            <div class="collection_list"></div>
+          </div>
+          <div class="collection__item">
+            <div class="collection__user">
+              <img src="source/img/user_1.avif" alt="user" />
+              <span class="name__user">RTFKT- MNLTH X</span>
+            </div>
+
+            <div class="collection_list"></div>
+          </div>
+          <div class="collection__item">
+            <div class="collection__user">
+              <img src="source/img/user_4.webp" alt="user" />
+              <span class="name__user">COCKPUNCH by Tim Ferriss</span>
+            </div>
+            <div class="collection_list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-NFT">
+      <div class="_content">
+        <a name="top-NFT"></a>
+
+        <div class="h-flex top-NFT__h-flex">
+          <h2>Top NFT’s now</h2>
+
+          <a href="#">
+            <div class="top-NFT__view-all">
+              <span>View all</span>
+
+              <svg width="53" height="27" viewBox="0 0 53 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5188 13.582L50.3153 13.582" stroke="white" stroke-width="1.65819" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M42.5771 5.84375L50.3154 13.582L42.5771 21.3202" stroke="white" stroke-width="1.65819"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </a>
+        </div>
+
+        <div class="card-flex top-NFT__card-flex">
+          <div class="swiper-wrapper">
+            <div class="card-flex__item swiper-slide">
+              <div class="card-flex__item__img">
+                <img src="source/img/top-NFT_img1.jpg" alt="img1" />
+              </div>
+
+              <div class="seller-card top-NFT__seller-card">
+                <div class="seller-card__column1">
+                  <h2>Apollo Eth #1289 NFT</h2>
+
+                  <div class="seller-card__profile">
+                    <img src="source/img/top-NFT_ava3.png" alt="ava" />
+
+                    <span>@jhonartist</span>
+
+                    <img src="source/img/main_verifical.png" alt="verifical" />
+                  </div>
+
+                  <p>Reserve price</p>
+
+                  <div class="seller-card__ETH">
+                    <img src="source/img/main_ETH.png" alt="ETH" />
+
+                    <span class="simple">ETH 9.31</span>
+
+                    <span class="gray">($29,8846)</span>
+                  </div>
+                </div>
+
+                <div class="seller-card__column2">
+                  <p>Auction Ends in</p>
+
+                  <div class="counter seller-card__counter">
+                    <div class="counter__hours counter__item">
+                      <h3>18</h3>
+                      <span>Hours</span>
+                    </div>
+
+                    <div class="counter__mins counter__item">
+                      <h3>25</h3>
+                      <span>Mins</span>
+                    </div>
+
+                    <div class="counter__secs counter__item">
+                      <h3>44</h3>
+                      <span>Secs</span>
+                    </div>
+                  </div>
+
+                  <button class="button seller-card__button">
+                    <a href="#">
+                      <span>Place Bid</span>
+
+                      <svg width="25" height="10" viewBox="0 0 25 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M19.3086 8.29153L22.6015 4.99867L19.3086 1.70581L19.9672 0.388672L24.5772 4.99867L19.9672 9.60867L19.3086 8.29153Z"
+                          fill="white" />
+                        <line x1="23.4717" y1="5.36328" x2="0.257097" y2="5.36328" stroke="white"
+                          stroke-width="1.10546" />
+                      </svg>
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-flex__item swiper-slide">
+              <div class="card-flex__item__img">
+                <img src="source/img/top-NFT_img2.jpg" alt="img2" />
+              </div>
+
+              <div class="seller-card top-NFT__seller-card">
+                <div class="seller-card__column1">
+                  <h2>Sassy Bull #1169 Art</h2>
+
+                  <div class="seller-card__profile">
+                    <img src="source/img/top-NFT_ava1.png" alt="ava" />
+
+                    <span>@jhonartist</span>
+
+                    <img src="source/img/main_verifical.png" alt="verifical" />
+                  </div>
+
+                  <p>Reserve price</p>
+
+                  <div class="seller-card__ETH">
+                    <img src="source/img/main_ETH.png" alt="ETH" />
+
+                    <span class="simple">ETH 9.31</span>
+
+                    <span class="gray">($29,8846)</span>
+                  </div>
+                </div>
+
+                <div class="seller-card__column2">
+                  <p>Auction Ends in</p>
+
+                  <div class="counter seller-card__counter">
+                    <div class="counter__hours counter__item">
+                      <h3>09</h3>
+                      <span>Hours</span>
+                    </div>
+
+                    <div class="counter__mins counter__item">
+                      <h3>15</h3>
+                      <span>Mins</span>
+                    </div>
+
+                    <div class="counter__secs counter__item">
+                      <h3>23</h3>
+                      <span>Secs</span>
+                    </div>
+                  </div>
+
+                  <button class="button seller-card__button">
+                    <a href="#">
+                      <span>Place Bid</span>
+
+                      <svg width="25" height="10" viewBox="0 0 25 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M19.3086 8.29153L22.6015 4.99867L19.3086 1.70581L19.9672 0.388672L24.5772 4.99867L19.9672 9.60867L19.3086 8.29153Z"
+                          fill="white" />
+                        <line x1="23.4717" y1="5.36328" x2="0.257097" y2="5.36328" stroke="white"
+                          stroke-width="1.10546" />
+                      </svg>
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-flex__item swiper-slide">
+              <div class="card-flex__item__img">
+                <img src="source/img/top-NFT_img3.jpg" alt="img3" />
+              </div>
+
+              <div class="seller-card top-NFT__seller-card">
+                <div class="seller-card__column1">
+                  <h2>Satisfying 3D Art</h2>
+
+                  <div class="seller-card__profile">
+                    <img src="source/img/top-NFT_ava2.png" alt="ava" />
+
+                    <span>@jhonartist</span>
+
+                    <img src="source/img/main_verifical.png" alt="verifical" />
+                  </div>
+
+                  <p>Reserve price</p>
+
+                  <div class="seller-card__ETH">
+                    <img src="source/img/main_ETH.png" alt="ETH" />
+
+                    <span class="simple">ETH 9.31</span>
+
+                    <span class="gray">($29,8846)</span>
+                  </div>
+                </div>
+
+                <div class="seller-card__column2">
+                  <p>Auction Ends in</p>
+
+                  <div class="counter seller-card__counter">
+                    <div class="counter__hours counter__item">
+                      <h3>23</h3>
+                      <span>Hours</span>
+                    </div>
+
+                    <div class="counter__mins counter__item">
+                      <h3>32</h3>
+                      <span>Mins</span>
+                    </div>
+
+                    <div class="counter__secs counter__item">
+                      <h3>56</h3>
+                      <span>Secs</span>
+                    </div>
+                  </div>
+
+                  <button class="button seller-card__button">
+                    <a href="#">
+                      <span>Place Bid</span>
+
+                      <svg width="25" height="10" viewBox="0 0 25 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M19.3086 8.29153L22.6015 4.99867L19.3086 1.70581L19.9672 0.388672L24.5772 4.99867L19.9672 9.60867L19.3086 8.29153Z"
+                          fill="white" />
+                        <line x1="23.4717" y1="5.36328" x2="0.257097" y2="5.36328" stroke="white"
+                          stroke-width="1.10546" />
+                      </svg>
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="explore-block">
+            <button class="explore card__explore">
+              <span>Explore</span>
+
+              <svg width="29" height="9" viewBox="0 0 29 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M23.4839 7.64544L26.4332 4.69613L23.4839 1.74682L24.0737 0.567101L28.2028 4.69613L24.0737 8.82517L23.4839 7.64544Z"
+                  fill="white" />
+                <line x1="26.4333" y1="4.69623" x2="0.479431" y2="4.69623" stroke="white" stroke-width="1.17972" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collection">
+      <div class="_content">
+        <a name="collections"></a>
+        <div class="collection__flex">
+          <div class="collection__left">
+            <div class="h-flex collections__h-flex">
+              <h2>Explore Collections</h2>
+            </div>
+
+            <div class="collection__grid">
+              <div class="collection__grid__item right">
+                <button class="collection__button grid__photography" onclick="ButtonActive(0)">
+                  Photography
+                </button>
+              </div>
+
+              <div class="collection__grid__item">
+                <button class="collection__button grid__sports" onclick="ButtonActive(1)">
+                  Sports
+                </button>
+              </div>
+
+              <div class="collection__grid__item right">
+                <button class="collection__button grid__brand" onclick="ButtonActive(2)">
+                  Brands
+                </button>
+              </div>
+
+              <div class="collection__grid__item">
+                <button class="collection__button grid__collectibles" onclick="ButtonActive(3)">
+                  Collectibles
+                </button>
+              </div>
+
+              <div class="collection__grid__item right">
+                <button class="collection__button grid__art active" onclick="ButtonActive(4)">
+                  Art
+                </button>
+              </div>
+
+              <div class="collection__grid__item">
+                <button class="collection__button grid__utility" onclick="ButtonActive(5)">
+                  Utility
+                </button>
+              </div>
+
+              <div class="collection__grid__item right">
+                <button class="collection__button grid__brands" onclick="ButtonActive(6)">
+                  Brands
+                </button>
+              </div>
+
+              <div class="collection__grid__item">
+                <button class="collection__button grid__collectibles" onclick="ButtonActive(7)">
+                  Collectibles
+                </button>
+              </div>
+            </div>
+
+            <div class="h-flex users__h-flex collection__view">
+              <a href="#">
+                <div class="top-NFT__view-all">
+                  <span>View all</span>
+
+                  <svg width="53" height="27" viewBox="0 0 53 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5188 13.582L50.3153 13.582" stroke="white" stroke-width="1.65819"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M42.5771 5.84375L50.3154 13.582L42.5771 21.3202" stroke="white" stroke-width="1.65819"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="collection__img">
+            <div class="collection__art">
+              <img src="source/img/collections_art_img.png" alt="art" />
+            </div>
+
+            <div class="collection__brand">
+              <img src="source/img/collection_brand_img.webp" alt="brand" />
+            </div>
+
+            <div class="collection__art">
+              <img src="source/img/collections_art_img.png" alt="art" />
+            </div>
+
+            <div class="collection__brand">
+              <img src="source/img/collection_brand_img.webp" alt="brand" />
+            </div>
+
+            <div class="collection__art active">
+              <img src="source/img/collections_art_img.png" alt="art" />
+            </div>
+
+            <div class="collection__brand">
+              <img src="source/img/collection_brand_img.webp" alt="brand" />
+            </div>
+
+            <div class="collection__art">
+              <img src="source/img/collections_art_img.png" alt="art" />
+            </div>
+
+            <div class="collection__brand">
+              <img src="source/img/collection_brand_img.webp" alt="brand" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="_content">
+      <div class="users">
+        <div class="_content">
+          <div class="h-flex users__h-flex">
+            <h2>Explore Collections</h2>
+
+            <a href="#">
+              <div class="top-NFT__view-all">
+                <span>View all</span>
+
+                <svg width="53" height="27" viewBox="0 0 53 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5188 13.582L50.3153 13.582" stroke="white" stroke-width="1.65819" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M42.5771 5.84375L50.3154 13.582L42.5771 21.3202" stroke="white" stroke-width="1.65819"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </a>
+          </div>
+
+          <div class="card-flex users__card-flex">
+            <div class="swiper-wrapper">
+              <div class="card-flex__item swiper-slide">
+                <div class="user-card user__user-card">
+                  <div class="card-flex__item__img">
+                    <img src="source/img/users_img.jpg" alt="img" />
+                  </div>
+
+                  <div class="user-card__flex">
+                    <div class="user-card__ava">
+                      <img src="source/img/user_ava1.png" alt="ava1" />
+                    </div>
+
+                    <h3>Jhones Nickey</h3>
+
+                    <div class="user-card__profile">
+                      <span>@jhonartist</span>
+
+                      <img src="source/img/main_verifical.png" alt="verifical" />
+                    </div>
+
+                    <div class="user-card__statistic">
+                      <div class="user-card__statistic__column">
+                        <span>125</span>
+                        <br />
+                        Folowers
+                      </div>
+
+                      <div class="user-card__statistic__column">
+                        <span>256</span>
+                        <br />
+                        Following
+                      </div>
+
+                      <div class="user-card__statistic__column">
+                        <span>129</span>
+                        <br />
+                        Artworks
+                      </div>
+                    </div>
+
+                    <a href="#">
+                      <button class="button">Follow</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-flex__item swiper-slide">
+                <div class="user-card user__user-card">
+                  <div class="card-flex__item__img">
+                    <img src="source/img/users_img.jpg" alt="img" />
+                  </div>
+
+                  <div class="user-card__flex">
+                    <div class="user-card__ava">
+                      <img src="source/img/user_ava2.png" alt="ava1" />
+                    </div>
+
+                    <h3>Cody Fisher</h3>
+
+                    <div class="user-card__profile">
+                      <span>@codyfishe</span>
+
+                      <img src="source/img/main_verifical.png" alt="verifical" />
+                    </div>
+
+                    <div class="user-card__statistic">
+                      <div class="user-card__statistic__column">
+                        <span>356</span>
+                        <br />
+                        Folowers
+                      </div>
+
+                      <div class="user-card__statistic__column">
+                        <span>456</span>
+                        <br />
+                        Following
+                      </div>
+
+                      <div class="user-card__statistic__column">
+                        <span>89</span>
+                        <br />
+                        Artworks
+                      </div>
+                    </div>
+
+                    <a href="#">
+                      <button class="button">Follow</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-flex__item swiper-slide">
+                <div class="user-card user__user-card">
+                  <div class="card-flex__item__img">
+                    <img src="source/img/users_img.jpg" alt="img" />
+                  </div>
+
+                  <div class="user-card__flex">
+                    <div class="user-card__ava">
+                      <img src="source/img/user_ava3.png" alt="ava1" />
+                    </div>
+
+                    <h3>Jerome Bell</h3>
+
+                    <div class="user-card__profile">
+                      <span>@jeromebt</span>
+
+                      <img src="source/img/main_verifical.png" alt="verifical" />
+                    </div>
+
+                    <div class="user-card__statistic">
+                      <div class="user-card__statistic__column">
+                        <span>546</span>
+                        <br />
+                        Folowers
+                      </div>
+
+                      <div class="user-card__statistic__column">
+                        <span>789</span>
+                        <br />
+                        Following
+                      </div>
+
+                      <div class="user-card__statistic__column">
+                        <span>54</span>
+                        <br />
+                        Artworks
+                      </div>
+                    </div>
+
+                    <a href="#">
+                      <button class="button">Follow</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="explore-block">
+              <button class="explore card__explore">
+                <span>Explore</span>
+
+                <svg width="29" height="9" viewBox="0 0 29 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M23.4839 7.64544L26.4332 4.69613L23.4839 1.74682L24.0737 0.567101L28.2028 4.69613L24.0737 8.82517L23.4839 7.64544Z"
+                    fill="white" />
+                  <line x1="26.4333" y1="4.69623" x2="0.479431" y2="4.69623" stroke="white" stroke-width="1.17972" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="top-sellers">
+      <div class="_content">
+        <a name="top-sellers"></a>
+        <div class="top-sellers__header">
+          <h1>
+            Top Sellers this <span>Month</span>
+            <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12.16 1.82482C12.1604 1.97921 12.1318 2.13175 12.0762 2.27124C12.0206 2.41073 11.9394 2.53363 11.8386 2.63089L6.62768 7.62233C6.47228 7.77433 6.27735 7.85742 6.07619 7.85742C5.87502 7.85742 5.6801 7.77433 5.5247 7.62233L0.313745 2.45521C0.136384 2.2798 0.0248484 2.02773 0.00367478 1.75447C-0.0174988 1.48121 0.0534239 1.20913 0.20084 0.998083C0.348257 0.78704 0.560092 0.654324 0.789744 0.629129C1.0194 0.603934 1.24805 0.688325 1.42541 0.863737L6.08053 5.48314L10.7356 1.01875C10.8631 0.892381 11.0184 0.812107 11.183 0.787429C11.3476 0.762752 11.5147 0.794702 11.6646 0.8795C11.8144 0.964299 11.9407 1.0984 12.0285 1.26592C12.1163 1.43345 12.1619 1.6274 12.16 1.82482Z"
+                fill="#FF56F6" />
+            </svg>
+          </h1>
+
+          <p>
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+            amet sint. Velit officia consequat duis enim minim mollit.
+          </p>
+        </div>
+
+        <div class="top-sellers__swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava1.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Eleanor Pena</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava2.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Esther Howard</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent red">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava3.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Jacob Jones</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava4.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Jane Cooper</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent red">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava5.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Savannah Nguyen</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent red">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava6.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Robert Fox</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava7.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Jerome Bell</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent red">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava8.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Kristin Watson</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava9.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Arlene McCoy</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava10.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Darlene Robertson</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava11.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Wade Warren</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent red">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+
+              <div class="top-sellers__seller">
+                <div class="seller__profile">
+                  <img src="source/img/seller_ava12.png" alt="ava1" />
+
+                  <div class="seller__info">
+                    <h3>Kathryn Murphy</h3>
+
+                    <div class="seller__ETH">
+                      <img src="source/img/seller_ETH.png" alt="ETH" />
+                      <span>74875</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="seller__procent red">
+                  <span>+468.48%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-sellers__explore-button-block">
+          <a href="#">
+            <button class="button">Explore all</button>
+          </a>
+        </div>
+
+        <div class="explore-block top-sellers__explore-block">
+          <button class="explore top-sellers__explore">
+            <span>Explore</span>
+
+            <svg width="29" height="9" viewBox="0 0 29 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M23.4839 7.64544L26.4332 4.69613L23.4839 1.74682L24.0737 0.567101L28.2028 4.69613L24.0737 8.82517L23.4839 7.64544Z"
+                fill="white" />
+              <line x1="26.4333" y1="4.69623" x2="0.479431" y2="4.69623" stroke="white" stroke-width="1.17972" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="product-NFT">
+      <div class="_content">
+        <h1 class="product-category">
+          <!-- Create NTF marketplace for your community -->
+          <!-- <button class="createbtn">Create marketplace</button> -->
+        </h1>
+        <button class="pre-btn"><i class="fa-solid fa-caret-right"></i></button>
+        <button class="nxt-btn"><i class="fa-solid fa-caret-right"></i></button>
+        <div class="product-container">
+          <div class="product__introduction">
+            <span>Create NFT marketplace for your community</span>
+            <button class="createbtn">Create marketplace</button>
+          </div>
+          <div class="product__list-card">
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1661956600655-e772b2b97db4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670315752366-bccd9f990697?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <!-- ------------------------------------ -->
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                  <!-- ------------------------------------ -->
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670316857992-dea1a7fad333?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670330883632-819e70d45073?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670299342628-f7f6b4beed1c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670274081461-7fee914ff18e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=778&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1669799369787-23c78e3975df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670182728009-bdd10660d1e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670237671058-19486c70a212?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=379&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  a short line about the cloth..
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1670171336566-6f08f1fbf648?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                  class="product-thumb" alt="" />
+                <button class="card-btn">See more</button>
+              </div>
+              <div
+                class="https://v5.airtableusercontent.com/v1/13/13/1670342400000/CgMz7wG9Oo24LerVZ90E0Q/ESgfAMFFQ3_k8dv6yZqjnt7YzH2AVm41GDaS5NZ5Z8T3nriugo7IzJGnQim0QVSyygCU2yTmnuAuJfySn-OixxyMaCX7KQcu2B8CuCnTFu8/XnXHieIV_281wpcKa_4hPAzw6j39ln0Niq7MtZ6CFx0">
+                <h2 class="product-brand">McFarlane Toys Digital</h2>
+                <p class="product-short-description">
+                  This is the first ever McFarlane Toys Digital colection, powered
+                  by Rarible
+                </p>
+                <div class="product-money">
+                  <div class="product-price">
+                    <a href="">Volume</a>
+                    <a href="">Floor</a>
+                  </div>
+                  <div class="product-highest_bid">
+                    <a href="">19.8K ETH</a>
+                    <a href="">0.599 ETH</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about">
+      <div class="about__info">
+        <h1>What are NFT’s ?</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum
+          quis amet, faucibus lorem. Lectus amet odio quis sed adipiscing
+          adipiscing magna non. Nullam turpis faucibus ridiculus suscipit. Et
+          blandit suspendisse curabitur eu congue dui ut.
+        </p>
+        <div class="about__links">
+          <a href="#"> Learn more </a>
+
+          <a href="#" class="about__video-link">
+            <svg width="13" height="19" viewBox="0 0 13 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M0.805781 0.863085C0.6895 0.777549 0.535352 0.764389 0.406449 0.830186C0.277929 0.895983 0.196838 1.02951 0.196838 1.17543V18.2052C0.196838 18.3512 0.277929 18.4847 0.406449 18.5505C0.460764 18.5784 0.520435 18.5923 0.57934 18.5923C0.659283 18.5923 0.738843 18.5671 0.805781 18.5176L12.2808 10.0027C12.3791 9.92953 12.4369 9.81341 12.4369 9.69034C12.4369 9.56726 12.3791 9.45114 12.2808 9.37799L0.805781 0.863085Z"
+                fill="white" />
+            </svg>
+
+            <span>Watch video</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="subscribe">
+      <div class="_content">
+        <div class="subscribe__flex">
+          <div class="subscribe__img"></div>
+
+          <div class="subscribe__info">
+            <h1>Subscribe to us</h1>
+
+            <p>
+              Specially developed to help restore a more youthful appearance
+              with improved radiance and bounce.
+            </p>
+
+            <div class="subscribe__form-flex">
+              <input type="text" placeholder="Your work email address" />
+
+              <a href="#">
+                <button class="button subscribe__button">Subscribe</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer-top footer__top">
+          <div class="footer-line footer-top__line"></div>
+
+          <div class="footer-top__flex">
+            <div class="footer-top__info">
+              <div class="footer-top__logo">
+                <img src="source/img/logo.png" alt="logo" />
+                <h3>OceanNFT</h3>
+              </div>
+
+              <p>
+                Lorem ipsum dolor amet, consectetur adipiscing elit. Eget nisl
+                nunc quam ac sed turpis volutpat. Cursus sed massa non nisi,
+                placerat.
+              </p>
+
+              <div class="footer-top__info__social">
+                <a href="#">
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M7.17558 0.846924C5.25412 0.846924 5.01298 0.855325 4.25831 0.889669C3.50512 0.924159 2.991 1.0434 2.54115 1.21836C2.07582 1.39907 1.68109 1.6408 1.28784 2.0342C0.894293 2.42745 0.652564 2.82218 0.471266 3.28736C0.295865 3.73736 0.176474 4.25163 0.142573 5.00453C0.108819 5.75919 0.0999756 6.00048 0.0999756 7.92194C0.0999756 9.84339 0.108525 10.0838 0.14272 10.8385C0.177359 11.5917 0.296602 12.1058 0.471414 12.5556C0.652269 13.021 0.893999 13.4157 1.2874 13.8089C1.6805 14.2025 2.07523 14.4448 2.54027 14.6255C2.99041 14.8005 3.50468 14.9197 4.25772 14.9542C5.01239 14.9885 5.25339 14.9969 7.1747 14.9969C9.0963 14.9969 9.3367 14.9885 10.0914 14.9542C10.8446 14.9197 11.3593 14.8005 11.8094 14.6255C12.2746 14.4448 12.6687 14.2025 13.0618 13.8089C13.4554 13.4157 13.6971 13.021 13.8784 12.5558C14.0523 12.1058 14.1717 11.5915 14.2071 10.8386C14.241 10.0839 14.2499 9.84339 14.2499 7.92194C14.2499 6.00048 14.241 5.75934 14.2071 5.00467C14.1717 4.25148 14.0523 3.73736 13.8784 3.28751C13.6971 2.82218 13.4554 2.42745 13.0618 2.0342C12.6683 1.64065 12.2747 1.39892 11.809 1.21836C11.3579 1.0434 10.8435 0.924159 10.0903 0.889669C9.33567 0.855325 9.09541 0.846924 7.17337 0.846924H7.17558ZM6.54086 2.12188C6.72923 2.12159 6.93942 2.12188 7.17555 2.12188C9.06458 2.12188 9.28847 2.12866 10.0344 2.16256C10.7243 2.1941 11.0986 2.30937 11.348 2.40621C11.6782 2.53444 11.9136 2.68773 12.1611 2.93536C12.4087 3.18298 12.562 3.41882 12.6905 3.74899C12.7874 3.99809 12.9028 4.37247 12.9342 5.06228C12.9681 5.80811 12.9754 6.03215 12.9754 7.9203C12.9754 9.80844 12.9681 10.0325 12.9342 10.7783C12.9026 11.4681 12.7874 11.8425 12.6905 12.0916C12.5623 12.4218 12.4087 12.6569 12.1611 12.9043C11.9134 13.152 11.6784 13.3053 11.348 13.4335C11.0989 13.5308 10.7243 13.6458 10.0344 13.6773C9.28862 13.7112 9.06458 13.7186 7.17555 13.7186C5.28637 13.7186 5.06248 13.7112 4.31665 13.6773C3.62684 13.6455 3.25245 13.5302 3.00291 13.4334C2.67274 13.3051 2.43691 13.1518 2.18929 12.9042C1.94166 12.6566 1.78837 12.4213 1.65984 12.091C1.563 11.8419 1.44759 11.4675 1.41619 10.7777C1.38229 10.0319 1.37551 9.80785 1.37551 7.91853C1.37551 6.0292 1.38229 5.80634 1.41619 5.06052C1.44774 4.3707 1.563 3.99632 1.65984 3.74692C1.78807 3.41675 1.94166 3.18092 2.18929 2.9333C2.43691 2.68567 2.67274 2.53238 3.00291 2.40385C3.25231 2.30657 3.62684 2.1916 4.31665 2.15991C4.96932 2.13043 5.22225 2.12159 6.54086 2.12011V2.12188ZM10.9521 3.29663C10.4834 3.29663 10.1031 3.67647 10.1031 4.14534C10.1031 4.61406 10.4834 4.99434 10.9521 4.99434C11.4209 4.99434 11.8011 4.61406 11.8011 4.14534C11.8011 3.67662 11.4209 3.29663 10.9521 3.29663ZM7.17559 4.2886C5.16909 4.2886 3.54228 5.91541 3.54228 7.92192C3.54228 9.92842 5.16909 11.5545 7.17559 11.5545C9.18209 11.5545 10.8083 9.92842 10.8083 7.92192C10.8083 5.91541 9.18209 4.2886 7.17559 4.2886ZM7.17556 5.56358C8.47795 5.56358 9.5339 6.61938 9.5339 7.92192C9.5339 9.22431 8.47795 10.2803 7.17556 10.2803C5.87302 10.2803 4.81722 9.22431 4.81722 7.92192C4.81722 6.61938 5.87302 5.56358 7.17556 5.56358Z"
+                      fill="white" />
+                  </svg>
+                </a>
+
+                <a href="#">
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M14.4682 7.91205C14.4682 8.39052 14.4195 8.86832 14.3239 9.33406C14.2306 9.78874 14.0924 10.2351 13.9114 10.6619C13.7345 11.081 13.5151 11.485 13.2588 11.8617C13.0062 12.236 12.7153 12.5872 12.3958 12.9073C12.0755 13.2261 11.7231 13.5162 11.349 13.7698C10.971 14.0243 10.5665 14.2434 10.1471 14.4211C9.71975 14.6011 9.27233 14.7391 8.81804 14.8323C8.35168 14.9282 7.87214 14.9772 7.39298 14.9772C6.91347 14.9772 6.43395 14.9282 5.96825 14.8323C5.51327 14.7391 5.06588 14.6011 4.63887 14.4211C4.21947 14.2434 3.81456 14.0243 3.43662 13.7698C3.06247 13.5162 2.71009 13.2261 2.39053 12.9073C2.07063 12.5872 1.77972 12.236 1.52684 11.8617C1.27188 11.485 1.05214 11.081 0.874582 10.6619C0.693531 10.2351 0.555015 9.78872 0.461389 9.33406C0.366737 8.86832 0.318359 8.39052 0.318359 7.91205C0.318359 7.43323 0.36671 6.95441 0.461416 6.48969C0.555043 6.035 0.693559 5.58793 0.874609 5.16189C1.05217 4.74241 1.27191 4.33811 1.52687 3.96138C1.77975 3.58675 2.07066 3.23623 2.39055 2.91574C2.71012 2.59697 3.0625 2.30756 3.43665 2.05435C3.81459 1.79871 4.2195 1.57968 4.6389 1.40165C5.06591 1.22119 5.51327 1.08288 5.96828 0.990438C6.43398 0.895232 6.91349 0.846924 7.39301 0.846924C7.87216 0.846924 8.35168 0.895232 8.81807 0.990438C9.27236 1.08291 9.71975 1.22122 10.1471 1.40165C10.5665 1.57965 10.9711 1.79871 11.349 2.05435C11.7232 2.30756 12.0756 2.59697 12.3958 2.91574C12.7154 3.23623 13.0063 3.58675 13.2588 3.96138C13.5151 4.33811 13.7345 4.74244 13.9114 5.16189C14.0924 5.58793 14.2306 6.035 14.3239 6.48969C14.4195 6.95441 14.4682 7.43323 14.4682 7.91205ZM4.81502 2.45485C3.13013 3.24935 1.87261 4.79966 1.48049 6.66806C1.63977 6.66944 4.15759 6.70119 7.05852 5.93152C6.01279 4.07623 4.89552 2.56217 4.81502 2.45485ZM7.55911 6.86058C4.44813 7.7906 1.46287 7.72368 1.35579 7.71956C1.35404 7.78441 1.35094 7.84718 1.35094 7.91205C1.35094 9.462 1.93652 10.875 2.89901 11.9434C2.89693 11.9403 4.5504 9.01113 7.81097 7.95828C7.88972 7.93207 7.96989 7.90859 8.04934 7.88583C7.8977 7.54295 7.73218 7.19934 7.55911 6.86058ZM11.3832 3.38389C10.3195 2.44725 8.92272 1.87912 7.39296 1.87912C6.90204 1.87912 6.42562 1.93846 5.96926 2.04815C6.05976 2.1696 7.19466 3.67299 8.22796 5.56757C10.5078 4.71412 11.3683 3.40595 11.3832 3.38389ZM8.46119 8.88557C8.44773 8.89002 8.43428 8.89387 8.42112 8.89868C4.85624 10.1397 3.69207 12.6406 3.67948 12.6679C4.70521 13.4644 5.99176 13.945 7.393 13.945C8.22972 13.945 9.02672 13.7749 9.75186 13.4669C9.66239 12.9397 9.31139 11.092 8.46119 8.88557ZM10.7693 12.9156C12.1259 12.0014 13.0895 10.5498 13.3582 8.86829C13.2339 8.82828 11.5435 8.2939 9.59325 8.60612C10.3858 10.7809 10.7078 12.552 10.7693 12.9156ZM8.69302 6.46659C8.83325 6.75431 8.96905 7.04714 9.09444 7.34145C9.13902 7.44702 9.18256 7.55052 9.22504 7.654C11.3006 7.39318 13.3455 7.83199 13.4329 7.84991C13.4191 6.41966 12.9067 5.10702 12.059 4.07936C12.0476 4.09554 11.0785 5.49374 8.69302 6.46659Z"
+                      fill="white" />
+                  </svg>
+                </a>
+
+                <a href="#">
+                  <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M7.2144 3.43854L7.24223 3.89756L6.77829 3.84136C5.08952 3.6259 3.61416 2.89522 2.36151 1.66805L1.7491 1.05915L1.59135 1.5088C1.25731 2.51114 1.47073 3.56969 2.16665 4.28164C2.53781 4.67508 2.4543 4.73129 1.81405 4.49709C1.59135 4.42215 1.3965 4.36595 1.37794 4.39405C1.31299 4.45962 1.53568 5.31208 1.71198 5.64932C1.95323 6.1177 2.44502 6.57672 2.9832 6.84838L3.43786 7.06384L2.89969 7.07321C2.38006 7.07321 2.36151 7.08257 2.41718 7.2793C2.60276 7.8882 3.3358 8.53456 4.15234 8.8156L4.72764 9.01232L4.22658 9.31208C3.48426 9.743 2.61204 9.98656 1.73982 10.0053C1.32226 10.0147 0.978943 10.0521 0.978943 10.0802C0.978943 10.1739 2.11097 10.6985 2.76978 10.9046C4.7462 11.5135 7.09377 11.2512 8.85677 10.2114C10.1094 9.47133 11.3621 8.00061 11.9467 6.57672C12.2621 5.81794 12.5776 4.43152 12.5776 3.76641C12.5776 3.3355 12.6055 3.27929 13.1251 2.76407C13.4313 2.46431 13.7189 2.13644 13.7746 2.04276C13.8674 1.86477 13.8581 1.86477 13.3849 2.02402C12.5962 2.30506 12.4848 2.26758 12.8746 1.84604C13.1622 1.54627 13.5055 1.00295 13.5055 0.843696C13.5055 0.815593 13.3663 0.862432 13.2086 0.946741C13.0416 1.04042 12.6704 1.18093 12.3921 1.26524L11.891 1.42449L11.4363 1.11536C11.1858 0.946741 10.8332 0.759387 10.6476 0.703181C10.1744 0.572034 9.45062 0.590769 9.02379 0.740652C7.86392 1.1622 7.13089 2.24885 7.2144 3.43854Z"
+                      fill="white" />
+                  </svg>
+                </a>
+
+                <a href="#">
+                  <svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M13.3582 0.361492C13.9671 0.528562 14.4466 1.02083 14.6093 1.64597C14.905 2.77897 14.905 5.14297 14.905 5.14297C14.905 5.14297 14.905 7.5069 14.6093 8.63997C14.4466 9.26511 13.9671 9.75739 13.3582 9.92454C12.2549 10.2281 7.83007 10.2281 7.83007 10.2281C7.83007 10.2281 3.40525 10.2281 2.30181 9.92454C1.69296 9.75739 1.21347 9.26511 1.05075 8.63997C0.755127 7.5069 0.755127 5.14297 0.755127 5.14297C0.755127 5.14297 0.755127 2.77897 1.05075 1.64597C1.21347 1.02083 1.69296 0.528562 2.30181 0.361492C3.40525 0.0578613 7.83007 0.0578613 7.83007 0.0578613C7.83007 0.0578613 12.2549 0.0578613 13.3582 0.361492ZM6.50353 3.1531V7.57494L10.041 5.3641L6.50353 3.1531Z"
+                      fill="white" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="footer-links footer-top__links">
+              <div class="footer-links__column market-place">
+                <h3 onclick="footerOpen(1)">
+                  <span>Market place</span>
+                  <img src="source/img/footer_arrow_down.png" alt="arrow" />
+                </h3>
+
+                <div class="columns__links">
+                  <a href="#">Overview</a>
+                  <a href="#" class="new">Features</a>
+                  <a href="#">Tutorials</a>
+                  <a href="#">Pricing</a>
+                  <a href="#">Releases</a>
+                </div>
+
+                <div class="footer-line"></div>
+              </div>
+
+              <div class="footer-links__column collectibles">
+                <h3 onclick="footerOpen(2)">
+                  <span>Collectibles</span>
+                  <img src="source/img/footer_arrow_down.png" alt="arrow" />
+                </h3>
+
+                <div class="columns__links">
+                  <a href="#">About</a>
+                  <a href="#">Press</a>
+                  <a href="#">Careers</a>
+                  <a href="#">Contact</a>
+                  <a href="#">Partners</a>
+                </div>
+
+                <div class="footer-line"></div>
+              </div>
+
+              <div class="footer-links__column support">
+                <h3 onclick="footerOpen(3)">
+                  <span>Support</span>
+                  <img src="source/img/footer_arrow_down.png" alt="arrow" />
+                </h3>
+
+                <div class="columns__links">
+                  <a href="#">Help Center</a>
+                  <a href="#">Safety Center</a>
+                  <a href="#">Legal</a>
+                  <a href="#">Privacy policy</a>
+                  <a href="#">Status</a>
+                </div>
+
+                <div class="footer-line"></div>
+              </div>
+
+              <div class="footer-links__column legal">
+                <h3 onclick="footerOpen(4)">
+                  <span>Legal</span>
+                  <img src="source/img/footer_arrow_down.png" alt="arrow" />
+                </h3>
+
+                <div class="columns__links">
+                  <a href="#">Cookies Policy</a>
+                  <a href="#">Privacy Policy</a>
+                  <a href="#">Terms of Service</a>
+                  <a href="#">Law Enforcement</a>
+                  <a href="#">Status</a>
+                </div>
+
+                <div class="footer-line"></div>
+              </div>
+
+              <div class="footer-links__column follow">
+                <h3 onclick="footerOpen(5)">
+                  <span>Follow us</span>
+                  <img src="source/img/footer_arrow_down.png" alt="arrow" />
+                </h3>
+
+                <div class="columns__links">
+                  <a href="#">Facebook</a>
+                  <a href="#">Twitter</a>
+                  <a href="#">Dribbble</a>
+                  <a href="#">Instagram</a>
+                  <a href="#">LinkedIn</a>
+                </div>
+
+                <div class="footer-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom footer__bottom">
+          <div class="footer-line footer-bottom__line"></div>
+
+          <div class="footer-bottom__flex">
+            <p>© 2020 Landify UI Kit. All rights reserved</p>
+
+            <div class="footer-bottom__flex__right">
+              <span><a href="#">Terms & Conditions</a></span>
+              <span class="line">|</span>
+              <span><a href="#">Privacy Policy</a></span>
+              <span class="line">|</span>
+              <span class="sitemap"><a href="#">Sitemap</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
 
 </html>

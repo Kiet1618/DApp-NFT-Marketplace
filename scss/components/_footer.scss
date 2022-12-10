@@ -1,0 +1,166 @@
+//===Footer===
+
+.footer{
+    .footer__content{
+        margin: 0 auto;
+        max-width: 1390px;
+        padding: 0 25px;
+    }
+
+    .footer-line{
+        border-top: solid white 1px;
+        opacity: 0.2;
+    }
+
+    .footer__top{
+        margin-bottom: 85px;
+
+        .footer-top__line{
+            margin-bottom: 100px;
+        }
+
+        .footer-top__flex{
+            display: flex;
+            justify-content: space-between;
+
+            .footer-top__info{
+                flex-basis: 25%;
+
+                .footer-top__logo{
+                    display: flex;
+                    align-items: center;
+
+                    font-size: 19.8983px;
+                    line-height: 25px;
+
+                    margin-bottom: 30px;
+
+                    img{margin-right: 5px;}
+                }
+
+                p{
+                    font-family: 'Inter';
+                    font-weight: 400;
+                    font-size: 15.4764px;
+                    line-height: 27px;
+                    font-feature-settings: 'salt' on, 'liga' off;
+                    color: #D9DBE1;
+
+                    margin-bottom: 25px;
+
+                    max-width: 278px;
+                }
+
+                .footer-top__info__social{
+                    display: flex;
+                    align-items: center;
+
+                    a{
+                        background-color: rgba(255, 255, 255, 0.1);
+                        border-radius: 100%;
+
+                        padding: 10px;
+                        margin-right: 17px;
+
+                        transition: 0.1s;
+                    }
+                    a:hover{background-color: rgba(255, 255, 255, 0.2);}
+                    a:active{background-color: rgba(255, 255, 255, 0.4);}
+                }
+            }
+
+            .footer-top__links{
+                flex-basis: 75%;
+                display: flex;
+                justify-content: space-around;
+
+                width: 100%;
+
+                .footer-links__column{
+                    h3{
+                        font-family: 'Inter';
+                        font-weight: 500;
+                        font-size: 19.8983px;
+                        line-height: 31px;
+                        font-feature-settings: 'salt' on, 'liga' off;
+
+                        margin-bottom: 17.7px;
+
+                        img{
+                            display: none;
+                            transform: rotate(90deg);
+                        }
+                    }
+
+                    .footer-line{display: none;}
+
+                    .columns__links{
+                        a{
+                            font-family: 'Inter';
+                            font-weight: 400;
+                            font-size: 15.4764px;
+                            line-height: 27px;
+                            font-feature-settings: 'salt' on, 'liga' off;
+                            color: #D9DBE1;
+
+                            margin-bottom: 13.5px;
+                            display: block;
+
+                            transition: 0.1s;
+                        }
+                        a:hover{
+                            text-decoration: underline;
+                            color: #FFFFFF;
+                        }
+                        a:active{color: #D9DBE1;}
+
+                        .new::after{
+                            content: 'new';
+                            margin-left: 8px;
+
+                            font-family: 'MuseoModerno';
+                            font-weight: 400;
+                            font-size: 22.1092px;
+                            line-height: 27px;
+                            color: #2EC5CE;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer__bottom{
+        font-family: 'Inter';
+        font-weight: 400;
+        font-size: 15.4764px;
+        line-height: 27px;
+        font-feature-settings: 'salt' on, 'liga' off;
+        color: #D9DBE1;
+
+        margin-bottom: 40px;
+
+        .footer-bottom__line{
+            margin-bottom: 25px;
+        }
+
+        .footer-bottom__flex{
+            display: flex;
+            justify-content: space-between;
+
+            .footer-bottom__flex__right{
+                .line{
+                    margin: 0 8px;
+                }
+
+                a{transition: 0.1s;}
+                a:hover{
+                    text-decoration: underline;
+                    color: #FFFFFF;
+                }
+                a:active{color: #D9DBE1;}
+            }
+        }        
+    }
+}
+

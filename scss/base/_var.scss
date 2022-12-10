@@ -1,0 +1,14 @@
+$header-color: #212428;
+$accent-color : #ff014f;
+$nav-color: #626770;
+$nav-active-color: #e2e2e3;
+$text-body-color: #ffffff;
+$title-items-coin-color: #c4cfde;
+$transition: all .3s;
+%flex-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+$speed: 250ms;

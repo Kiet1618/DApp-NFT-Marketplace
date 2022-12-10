@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    body {
+        padding: 20px;
+        font-size: large;
+        /* background: #f3f3f3; */
+        /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
+        background-image: url('https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/img/demo-1-bg.jpg');
+
+    }
+    .comeback {
+        /* display: inline-block;
+  background: #39C;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(0, 0, 0); */
+  background: linear-gradient(89.89deg, #42A6E3 2.33%, #FF56F6 101.4%);
+            backdrop-filter: blur(106.124px);
+            border-radius: 2.21092px;
+            color:#fff;
+            font-weight: bold;
+
+
+    }
+    a {
+        text-decoration: none;
+        color:rgb(255, 255, 255);
+    }
+    label {
+        color:#fff;
+    }
+
+    div {
+        margin: 10px;
+    }
+
+    input,
+    button {
+        /* width: 100%; */
+        color:#9baacf;
+        padding: 10px;
+        font-size: large;
+        border-radius: 10px;
+        /* box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem #FFFFFF; */
+        /* background: none; */
+        border:none;
+
+
+        /* max-width: 450px; */
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .none {
+        display: none;
+    }
+.body-section {
+    background-image: url('../source/img/about_background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.body-content {
+    display: flex;
+}
+.main {
+    width: 100%;
+    height: auto;
+}
+.main-container {
+    /* background: #fff; */
+    background: rgba(255, 255, 255, 0.2);
+        
+        backdrop-filter: blur(70px);
+    border:1px solid rgba(0, 0, 0, .12);
+    border-radius: 5px;
+    padding: 25px 30px;
+    margin-bottom: 15px;
+}
+.main-container h2 {
+    text-align: center;
+    color:rgb(52, 151, 111);
+}

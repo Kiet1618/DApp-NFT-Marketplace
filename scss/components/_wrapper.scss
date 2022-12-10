@@ -1,0 +1,83 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    // overflow-x: hidden;
+    // background: rgba(32, 8, 59, 1);
+    // background: #fff;
+
+    position: relative;
+}
+
+.wrapper {
+    //backdrop-filter: blur(92.3058px);
+
+    font-family: 'Orbitron';
+    font-weight: 700;
+    // color: #FFFFFF;
+    color: #000;
+
+    // overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+
+}
+
+
+._content {
+    max-width: 1340px;
+    padding: 0 25px;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid #ECECEC;
+    border-radius: 22px;
+    flex-direction: column;
+    line-height: 22.4px;
+    padding: 6px;
+    .collection__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        line-height: 22.4px;
+        padding: 16px 0;
+        .collection__user {
+            display: flex;
+            align-items: center;
+            .name__user {
+                font-weight: 500;
+                font-size: 24px;
+                color: rgb(39, 29, 29);
+            }
+            img {
+                width: 92px;
+                height: 92px;
+                border-radius: 14px;
+                margin-right: 70px;
+            }
+        }
+        .collection_list {
+            overflow-x: scroll;
+            max-width: 600px;
+            display: flex;
+            
+            img {
+                display: inline-block;
+                // width: 96px;
+                max-width: 70%;
+                height: 96px;
+                margin: 0 20px 0 0;
+                
+            }
+          
+        }
+    }
+}
+.collection_list::-webkit-scrollbar {
+    display: none;
+    
+}

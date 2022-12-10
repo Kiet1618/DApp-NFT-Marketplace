@@ -1,0 +1,389 @@
+.main{
+    .main__flex{
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 200px;
+        // padding: 20px 32px;
+        margin-bottom: 215px;
+        // background-color: rgba(22,22,26, 0.256);
+        // border-radius: 15px;
+
+        .main__info{
+            flex-basis: 55%;
+            
+        }
+
+        .main__NFT {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            height: 480px;
+            width: 480px;
+            overflow: hidden;
+            border-radius: 15px;
+
+            margin-left: 100px;
+            .image_container {
+                display: flex;
+                transform: translateX(0);
+                transition: transform 0.5s ease-in-out;
+                
+                img{
+                    // display: inline;
+                    width: 480px;
+                    height: 480px;
+                    border-radius: 15px;
+                    // margin-left: 50px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        // .main__NFT{
+        //     margin-left: 50px;
+        //     //flex-basis: 40%;
+
+        //     .main__NFT-pictures{
+        //         box-shadow: 1px 3px 5px black;
+        //         border-radius: 20px;
+
+        //         display: inline-block;
+        //         position: relative;
+                
+        //         img{
+        //             border-radius: 20px;
+        //             width: 100%;
+        //         }
+        //     }
+
+        //     .main__NFT-pictures:before {
+        //         background-color: rgba(32, 8, 59, 1);
+        //         width: 70px;
+        //         height: 160px;
+        //         content: '';
+        //         position: absolute;
+        //         transform: rotate(55deg);
+        //         left: 0px;
+        //         top: -70px;
+        //     }
+
+        //     .main__NFT__seller-card{
+        //         border-radius: 8.84367px;
+        //         max-width: 336px;
+        //         padding: 27px 20px 18px;
+
+        //         position: relative;
+
+        //         top: -120px;
+        //         left: 155px;
+
+        //         clip-path: polygon(70px 0,100% 0,100% calc(100% - 0px), calc(100% - 45px) 100%,0 100%,0 45px);
+        //     }
+
+        //     .main__NFT__seller-card:before {
+        //         border-right: solid 2px rgba(255, 255, 255, 0.3);
+        //         width: 50px;
+        //         height: 120px;
+        //         content: '';
+        //         position: absolute;
+        //         transform: rotate(57deg);
+        //         left: -16px;
+        //         top: -51px;
+        //         //background: rgba($color: #FFFFFF, $alpha: 1);
+        //     }
+            
+        // }
+
+        .main__partners{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            flex-grow: 1;
+
+            .main__partners-left, .main__partners-right{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                //flex-grow: 1;
+
+                flex-basis: 47%;
+
+                div{
+                    img{width: 100%;}
+                }
+            }
+        }
+    }
+}
+
+.info{
+    h1{
+        font-family: 'League Spartan', sans-serif;
+        font-weight: 600;
+        font-size: 66.3276px;
+        line-height: 137.4%;
+
+        margin-bottom: 21px;
+
+        span{
+            background: linear-gradient(89.89deg, #FF56F6 2.33%, #42A6E3 101.4%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+
+    p{
+        font-family: 'Rajdhani';
+        font-weight: 400;
+        font-size: 26.531px;
+        line-height: 44px;
+
+        margin-bottom: 43px;
+    }
+
+    .info__buttons{
+        margin-bottom: 70px;
+
+        .button_border-slesh{
+            //background: linear-gradient(89.89deg, #42A6E3 2.33%, #FF56F6 101.4%);
+            background: linear-gradient(89.89deg, #42A6E3 2.33%, #FF56F6 101.4%);
+            backdrop-filter: blur(106.124px);
+            border-radius: 2.21092px;
+            //border-radius: 30px 0px 30px 0px;
+            //clip-path: polygon(50px 0,100% 0,100% calc(100% - 20px), calc(100% - 50px) 100%,0 100%,0 20px);
+            
+            font-size: 19.8983px;
+            line-height: 25px;
+
+            padding: 20px 32px 19px 67px;
+
+            svg{margin-left: 5px;}
+
+            clip-path: polygon(40px 0,100% 0,100% calc(100% - 20px), calc(100% - 40px) 100%,0 100%,0 20px);
+        }
+
+        .button_border-slesh:hover{
+            background: linear-gradient(92.23deg, #FF56F6 21.43%, #B936EE 50.63%, #3BACE2 100%, #406AFF 117.04%);
+        }
+/*
+        .button_border-slesh:before {
+            width: 50px;
+            height: 70px;
+            content: '';
+            position: absolute;
+            transform: rotate(60deg);
+            left: -15px;
+            top: -40px;
+            background: rgba(32, 8, 59, 1);
+        }*/
+
+        .info__create{
+            display: inline-block;
+            background: linear-gradient(89.89deg, #42A6E3 2.33%, #FF56F6 101.4%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+
+            font-size: 19.8983px;
+            line-height: 25px;
+
+            margin-left: 37px;
+
+            transition: 0.2s;
+        }
+
+        .info__create:hover{
+            background: linear-gradient(89.89deg, #FF56F6 2.33%, #42A6E3 101.4%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+}
+
+.button{
+    background: linear-gradient(92.23deg, #FF56F6 21.43%, #B936EE 50.63%, #3BACE2 100%, #406AFF 117.04%);
+    box-shadow: 0px 4.42184px 107.23px rgba(255, 86, 246, 0.51);
+    //backdrop-filter: blur(106.124px);
+    //border-radius: 2.21092px;
+
+    font-family: 'Orbitron';
+    font-weight: 700;
+    color: #FFFFFF;
+    position: relative;
+
+    transition: 0.1s;
+
+    a{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg{margin-left: 10px;}
+    }
+}
+
+.button:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 4.42184px 90px rgba(255, 86, 246, 0.7);
+    background: linear-gradient(89.89deg, #42A6E3 2.33%, #FF56F6 101.4%);
+}
+
+.button:active{
+    transform: scale(0.95);
+}
+
+.button::before{
+    content: '';
+    background: linear-gradient(89.89deg, #42A6E3 2.33%, #FF56F6 101.4%);
+    
+    position: absolute;
+
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+
+    z-index: -1;
+}
+
+.statistic{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+
+    .statistic__item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h2{
+            font-family: 'Aldrich';
+            font-weight: 400;
+            font-size: 39.7965px;
+            line-height: 53px;
+            letter-spacing: 0.221092px;
+        }
+
+        h5{
+            font-family: 'Aldrich';
+            font-weight: 400;
+            font-size: 17.6873px;
+            line-height: 22px;
+            letter-spacing: 0.221092px;
+        }
+    }
+
+    .statistic__line{
+        border-left: 1.10546px solid rgba(255, 255, 255, 0.26);
+        height: 60px;
+    }
+}
+
+
+.seller-card{
+    display: flex;
+    justify-content: space-between;
+
+    font-family: 'Rajdhani';
+
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) -1.52%, rgba(255, 255, 255, 0.024) 104.35%);
+    backdrop-filter: blur(30.4001px);
+
+    border: solid 2px rgba(255, 255, 255, 0.3);
+
+    .seller-card__column1{
+        h2{
+            font-weight: 700;
+            font-size: 17.6873px;
+            line-height: 35px;
+        }
+
+        .seller-card__profile{
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 6.63px;
+            span{padding: 0 3.32px;}
+        }
+
+        p{
+            font-weight: 600;
+            font-size: 11.0546px;
+            line-height: 35px;
+            opacity: 0.7;
+        }
+
+        .seller-card__ETH{
+            display: flex;
+            align-items: center;
+            margin-top: -10px;
+
+            .simple{
+                font-family: 'Orbitron';
+                font-weight: 700;
+                font-size: 9.71776px;
+                line-height: 12px;
+
+                margin: 0 5.5px;
+            }
+
+            .gray{
+                font-family: 'Rajdhani';
+                font-weight: 400;
+                font-size: 11.0546px;
+                line-height: 35px;
+                opacity: 0.7;
+
+                padding-top: 2px;
+            }
+        }
+    }
+
+    .seller-card__column2{
+        p{
+            font-weight: 600;
+            font-size: 11.0546px;
+            line-height: 35px;
+            opacity: 0.7;
+        }
+
+        .seller-card__counter{
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 23px;
+
+            .counter__item{
+                display: flex;
+                flex-direction: column;
+
+                h3{
+                    font-weight: 600;
+                    font-size: 17.6873px;
+                    line-height: 15px;
+                }
+
+                span{
+                    font-weight: 500;
+                    font-size: 11.0546px;
+                    line-height: 15px;
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        .seller-card__button, .button::before{
+            font-family: 'Rajdhani';
+            font-weight: 600;
+            font-size: 17.6873px;
+            line-height: 23px;
+
+            padding: 7.7px 8.8px;
+
+            border-radius: 2.21092px;
+        }
+    }
+}
