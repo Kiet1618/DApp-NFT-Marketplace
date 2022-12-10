@@ -12,7 +12,7 @@ const iconService = new IconService(httpProvider);
 const { IconBuilder } = IconService
     const { CallBuilder } = IconBuilder
 //NOTE cho nhom lam WEB front-end
-var myAddress; //Địa chỉ ví của user
+var myAddress=""; //Địa chỉ ví của user
 var adminAddress = "hx92d7c1f36674f5c5f93aab101b508daaa621b22d"; // Địa chỉ ví của tao
 var nameUser; // Tên User (String)
 
@@ -132,7 +132,8 @@ function connectWallet() {
     const { type, payload } = event.detail;
     if (type === "RESPONSE_ADDRESS") {
       myAddress = payload;
-      getName();
+      // getName();
+      swapIcon() ;
     }
   };
   window.addEventListener("ICONEX_RELAY_RESPONSE", eventHandler);
@@ -716,3 +717,27 @@ inputAvatar.addEventListener('change', (e) => {
 //   // console.log(a);
 //   // console.log(img);
 //   const div = document.createElement("div");
+
+function profile(){
+  document.getElementById("main__page").style.display="none";
+  document.getElementById("profile__page").style.display="block";
+  
+
+}
+function nftPage(){
+  document.getElementById("main__page").style.display="none";
+  document.getElementById("profile__page").style.display="none";
+  document.getElementById("nft__page").style.display="block";
+
+}
+function mainPage(){
+  document.getElementById("main__page").style.display="block";
+
+}
+function swapIcon() {
+  document.getElementById("connect__walletButton").style.display="none";
+  document.getElementById("profile__icon").style.display="block";
+  document.getElementById("cart__button").style.display="block";
+
+
+}
