@@ -1068,11 +1068,20 @@ const marketplace = document.querySelector("#content1");
 // const collectionNFT = document.querySelector("#item1");
 async function call(){
   allPublicNFTs = await getPublicNFTs();
-  console.log(allPublicNFTs);
+  
 
   allPublicNFTs.map(async (publicNFT) => {
     const img = document.createElement("img");
     img.src = publicNFT;
+   ;
+    var info = await getNFTInfo(publicNFT);
+    // console.log(info);
+    
+    var avatar__nftPage = await getAvatar(info[0]);
+    var nameuser__nftPage = await getName(info[0]);
+    
+    // console.log(nameuser__nftPage);
+
     // var a = await getNFTInfo(publicNFT);
     // console.log(a);
     // console.log(img);
@@ -1087,15 +1096,15 @@ async function call(){
         <div class="marketplace-card__title-info">
           <p class="marketplace-card__title-name">"${nameUser}"</p>
           <p class="marketplace-card__title-author">
-            Created by <a href="#">Rick</a>
+            Created by <a href="#">${nameuser__nftPage}</a>
           </p>
         </div>
         <a class="marketplace-card__title-author-link" href="#">
           <img
             class="marketplace-card__title-autorimg"
-            src="source/img/seller_ava1.png"
+            src="${avatar__nftPage}"
             alt="Rick"
-          />
+          >
         </a>
       </div>
       <ul class="marketplace-card__info">

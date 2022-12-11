@@ -2602,6 +2602,7 @@ button {
 }
 .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__title-autorimg {
   width: 35px;
+  border-radius: 50%;
 }
 .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__info .marketplace-info__item {
   text-align: center;
