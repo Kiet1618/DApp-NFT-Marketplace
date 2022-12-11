@@ -384,7 +384,7 @@
           justify-content: space-between;
   font-family: "Inter", sans-serif;
 }
-.users li {
+.users .user__nft {
   -ms-flex-preferred-size: 20%;
       flex-basis: 20%;
   padding-left: 1px;
@@ -392,16 +392,20 @@
   padding-top: 8px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+          display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
 }
-.users li .user-item {
-  width: 363px;
-  height: 200px;
+.users .user__nft .user-item {
+  display: flex;
+  width: 370px;
+  height: 130px;
   padding: 8px;
   border: 1px solid rgba(22, 22, 26, 0.08);
   border-radius: 16px;
   background-color: #191c1f;
 }
-.users li:hover a.buy-now {
+.users .user__nft:hover a.buy-now {
   bottom: 20px;
 }
 
@@ -417,6 +421,7 @@
 }
 .user-info {
   margin-top: 10px;
+  margin-left: 20px;
 }
 .user-info a {
   margin-left: 12px;
@@ -435,6 +440,7 @@
   font-size: 18px;
   position: relative;
   bottom: 30px;
+
 }
 
 .user-money {
@@ -468,13 +474,11 @@
 }
 .user-top .user-avatar img
 {
-  position: absolute;
-  bottom: 30px;
-  left: 10px;
-  width: auto;
+  
+  
   border-radius: 50%;
-  // width: 337px;
-  // height: 148px;
+  width: 100px;
+  height: 100px;
   
 }
 .user-avatar img {
@@ -741,4 +745,197 @@ body.open .lightbox {
   background: white;
   border: solid 1px black;
   margin: 20px;
+}
+
+.marketplace1 {
+  margin-bottom: 100px;
+  padding-top: 130px;
+
+  &__subtitle {
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(
+      180deg,
+      #9c76b8 0%,
+      rgba(156, 118, 184, 0) 100%
+    );
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: "DM Mono", monospace;
+    font-weight: 500;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+
+    & span {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+      padding-right: 23px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        right: 1px;
+        background-image: url(../img/icons/marketplace-title-icon.png);
+        background-size: cover;
+        width: 14px;
+        height: 17px;
+      }
+    }
+  }
+
+  &__tabs-box {
+    .marketplace__tabs {
+      @extend %flex-center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+      justify-content: start;
+      gap: 15px;
+      
+
+      .marketplace__tab {
+        font-family: "DM Mono", monospace;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        padding: 10px 23px;
+        background: #fff;
+        border-radius: 5px;
+        transition: $transition;
+        cursor: default;
+
+        &--active {
+          background: pink;
+        }
+
+        &:hover {
+          @extend .marketplace__tab--active;
+        }
+      }
+    }
+
+    .marketplace__content-box {
+      margin-bottom: 70px;
+    
+
+      .marketplace__content {
+        display: none;
+
+        
+
+        &--active {
+            display: grid;
+          // grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: repeat(4, 1fr);
+          
+          gap: 20px;
+        }
+
+        .marketplace-card1 {
+          padding: 14px 26px;
+          border: 1px solid #f2f2f2;
+          background-color: #fff;
+          border-radius: 5px;
+          width: 100%;
+          transition: $transition;
+
+          &:hover {
+            // border-color: #16161a;
+            box-shadow: #f2f2f2 1px 1px 1px 1px;
+          }
+
+          &__img1 {
+            display: block;
+            border-radius: 6px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            // width: 100%;
+            max-width: 219px;
+            height: 214px;
+          }
+
+          &__title1 {
+            @extend %flex-center;
+            font-size: 14px;
+            line-height: 16px;
+            margin-bottom: 10px;
+            
+
+            &-name1 {
+              font-weight: 700;
+              margin-bottom: 4px;
+            }
+
+            &-author1 a {
+              font-weight: 700;
+            }
+
+            &-autorimg1 {
+              width: 35px;
+              border-radius: 50%;
+            }
+          }
+
+          &__info1 {
+            @extend %flex-center;
+
+            .marketplace-info__item1 {
+              text-align: center;
+
+              &-title1 {
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 14px;
+                color: #545c71;
+                margin-bottom: 4px;
+                text-align: left;
+                margin-bottom: 15px;
+              }
+
+              &-data1 {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 16px;
+                position: relative;
+                display: flex;
+                padding: 1px;
+                span {
+                  padding: 2px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .marketplace__view-more1 {
+      text-align: center;
+      margin: 0 auto;
+
+      &-link1 {
+        font-family: "DM Mono", monospace;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 9px 39px;
+        border: 1px solid #30384d;
+        transition: $transition;
+        background: #30384d;
+        border-radius: 5px;
+
+        &:hover {
+          border-color: #fff;
+          background-color: transparent;
+        }
+      }
+    }
+  }
 }

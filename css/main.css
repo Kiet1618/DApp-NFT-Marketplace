@@ -107,7 +107,11 @@ a {
   display: none;
 }
 
-.marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__info, .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__title, .marketplace__tabs-box .marketplace__tabs {
+#user__page {
+  display: none;
+}
+
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__info1, .marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__title1, .marketplace1__tabs-box .marketplace__tabs, .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__info, .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__title, .marketplace__tabs-box .marketplace__tabs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2803,7 +2807,7 @@ button {
   font-family: "Inter", sans-serif;
 }
 
-.users li {
+.users .user__nft {
   -ms-flex-preferred-size: 20%;
   flex-basis: 20%;
   padding-left: 1px;
@@ -2811,18 +2815,24 @@ button {
   padding-top: 8px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.users li .user-item {
-  width: 363px;
-  height: 200px;
+.users .user__nft .user-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 370px;
+  height: 130px;
   padding: 8px;
   border: 1px solid rgba(22, 22, 26, 0.08);
   border-radius: 16px;
   background-color: #191c1f;
 }
 
-.users li:hover a.buy-now {
+.users .user__nft:hover a.buy-now {
   bottom: 20px;
 }
 
@@ -2839,6 +2849,7 @@ button {
 
 .user-info {
   margin-top: 10px;
+  margin-left: 20px;
 }
 
 .user-info a {
@@ -2897,11 +2908,9 @@ button {
 }
 
 .user-top .user-avatar img {
-  position: absolute;
-  bottom: 30px;
-  left: 10px;
-  width: auto;
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
 
 .user-avatar img {
@@ -3183,6 +3192,162 @@ body.open .lightbox {
   background: white;
   border: solid 1px black;
   margin: 20px;
+}
+
+.marketplace1 {
+  margin-bottom: 100px;
+  padding-top: 130px;
+}
+.marketplace1__subtitle {
+  color: transparent;
+  -webkit-background-clip: text;
+          background-clip: text;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9c76b8), to(rgba(156, 118, 184, 0)));
+  background-image: linear-gradient(180deg, #9c76b8 0%, rgba(156, 118, 184, 0) 100%);
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+}
+.marketplace1__title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.marketplace1__title span {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  padding-right: 23px;
+  position: relative;
+}
+.marketplace1__title span::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 1px;
+  background-image: url(../img/icons/marketplace-title-icon.png);
+  background-size: cover;
+  width: 14px;
+  height: 17px;
+}
+.marketplace1__tabs-box .marketplace__tabs {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 50px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  gap: 15px;
+}
+.marketplace1__tabs-box .marketplace__tabs .marketplace__tab {
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 10px 23px;
+  background: #fff;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: default;
+}
+.marketplace1__tabs-box .marketplace__tabs .marketplace__tab--active, .marketplace1__tabs-box .marketplace__tabs .marketplace__tab:hover {
+  background: pink;
+}
+.marketplace1__tabs-box .marketplace__content-box {
+  margin-bottom: 70px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content {
+  display: none;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content--active {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1 {
+  padding: 14px 26px;
+  border: 1px solid #f2f2f2;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1:hover {
+  -webkit-box-shadow: #f2f2f2 1px 1px 1px 1px;
+          box-shadow: #f2f2f2 1px 1px 1px 1px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__img1 {
+  display: block;
+  border-radius: 6px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  max-width: 219px;
+  height: 214px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__title1 {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 10px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__title1-name1 {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__title1-author1 a {
+  font-weight: 700;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__title1-autorimg1 {
+  width: 35px;
+  border-radius: 50%;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__info1 .marketplace-info__item1 {
+  text-align: center;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__info1 .marketplace-info__item1-title1 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 14px;
+  color: #545c71;
+  margin-bottom: 4px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__info1 .marketplace-info__item1-data1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1px;
+}
+.marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__info1 .marketplace-info__item1-data1 span {
+  padding: 2px;
+}
+.marketplace1__tabs-box .marketplace__view-more1 {
+  text-align: center;
+  margin: 0 auto;
+}
+.marketplace1__tabs-box .marketplace__view-more1-link1 {
+  font-family: "DM Mono", monospace;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 9px 39px;
+  border: 1px solid #30384d;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: #30384d;
+  border-radius: 5px;
+}
+.marketplace1__tabs-box .marketplace__view-more1-link1:hover {
+  border-color: #fff;
+  background-color: transparent;
 }
 
 .top-NFT .top-NFT__h-flex {

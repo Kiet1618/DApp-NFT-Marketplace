@@ -39,7 +39,7 @@ function connectWallet() {
             myAddress = payload;
             swapIcon() ;
             callApiAddress();
-            
+            call2();
         }
     }
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
@@ -411,7 +411,20 @@ function  editNFT() {
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
 }
 
-function sendBid() {
+
+function numHex(s)
+{
+    var a = s.toString(16);
+    if ((a.length % 2) > 0) {
+        a = "0" + "x" +a;
+    }
+    return a;
+}
+
+function sendBid(str, price) {
+    var _price = 0xde0b6b3a7640000*price;
+    var _value = numHex(_price);
+    var bid = String(_value);
     const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
         detail: {
             type: 'REQUEST_JSON-RPC',
@@ -424,13 +437,13 @@ function sendBid() {
                     timestamp: `0x${((new Date().getTime() * 1000).toString(16))}`,
                     version: "0x3",
                     from: myAddress, // TX sender address
-                    // value: "0xde0b6b3a7640000",
+                    value: bid,
                     stepLimit: "2500000000",
                     to: contractAddress,   // SCORE address
                     dataType: "call",
                     data: {
                         method: "sendBid", // SCORE external function
-                        params: { _user: myAddress, _nft: document.getElementById('nft').value, _bid: document.getElementById('price').value  }
+                        params: { _user: myAddress, _nft: str, _bid: "1"}
                     }
                 }
             }
@@ -442,6 +455,7 @@ function sendBid() {
     }
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
 }
+
 function addToCart() {
     const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
         detail: {
@@ -1037,21 +1051,30 @@ function profile(){
   document.getElementById("main__page").style.display="none";
   document.getElementById("profile__page").style.display="block";
   document.getElementById("nft__page").style.display="none";
-
-
-  
+  document.getElementById("user__page").style.display="none";
 
 }
 function nftPage(){
   document.getElementById("main__page").style.display="none";
   document.getElementById("profile__page").style.display="none";
+  document.getElementById("user__page").style.display="none";
   document.getElementById("nft__page").style.display="block";
 
 }
+
+function userPage(){
+    document.getElementById("main__page").style.display="none";
+  document.getElementById("profile__page").style.display="none";
+  document.getElementById("nft__page").style.display="none";
+  document.getElementById("user__page").style.display="block";
+}
+
+
 function mainPage(){
   document.getElementById("main__page").style.display="block";
   document.getElementById("profile__page").style.display="none";
   document.getElementById("nft__page").style.display="none";
+  document.getElementById("user__page").style.display="none";
 
 }
 function swapIcon() {
@@ -1065,9 +1088,42 @@ function swapIcon() {
 
 const listItems = [];
 const marketplace = document.querySelector("#content1");
-// const marketplace1 = document.querySelector("#mynft");
+const marketplace1 = document.querySelector("#mynft");
+const users = document.querySelector("#getuser");
 
 // const collectionNFT = document.querySelector("#item1");
+
+async function callUser(){
+    allUsers = await getUsers();
+    console.log(allUsers);
+    allUsers.map(async (user) =>{
+        var avatar__profilepage = await getAvatar(user);
+        // console.log(avatar__profilepage);
+        var name__profilepage = await getName(user);
+        const div = document.createElement("div");
+        div.setAttribute("class","user-item");
+        listItems.push(div);
+        div.innerHTML=`
+        <div class="user-top">
+                          
+                          <div class="user-avatar">
+                              <img src= "${avatar__profilepage}" alt="Avatar">
+                          </div>
+                      </div>
+                      <div class="user-info">
+                        <h2 id="name__user" style="color:#fff;">${name__profilepage}</h2>
+                        <div id="my__address" style="color:#fff;overflow:hidden;max-width:200px;text-overflow:ellipsis;">${user}</div>
+                     </div>
+        `
+        users.appendChild(div);
+
+    })
+    
+
+
+   
+}
+
 
 async function call(){
   allPublicNFTs = await getPublicNFTs();
@@ -1084,7 +1140,7 @@ async function call(){
     var nameuser__nftPage = await getName(info[0]);
     var description__nftPage =  (info[2]);
     var price__nftPage =  (info[1]);
-    console.log(price__nftPage);
+    // console.log(price__nftPage);
 
     // console.log(description__nftPage);
     
@@ -1147,7 +1203,7 @@ async function call(){
               Add to cart
             </a>
           </p>
-          <button class="buy-now">Buy now</button>
+          <button class="buy-now" onclick="sendBid('${publicNFT}', ${price__nftPage})">Buy now</button>
           
           
         </li>
@@ -1155,7 +1211,76 @@ async function call(){
         `;
     marketplace.appendChild(div);
     
-    console.log(marketplace);
+    // console.log(marketplace);
+  });
+
+}
+async function call2(){
+    var mynfts = myAddress+"/Owning"
+    console.log(mynfts);
+  mynft = await getCollectionNFTs(mynfts);
+  
+  
+
+  mynft.map(async (publicNFT) => {
+    const img = document.createElement("img");
+    img.src = publicNFT;
+   ;
+    var info = await getNFTInfo(publicNFT);
+    // console.log(info);
+    
+    var avatar__nftPage = await getAvatar(info[0]);
+    var nameuser__nftPage = await getName(info[0]);
+    var description__nftPage =  (info[2]);
+    var price__nftPage =  (info[1]);
+    // console.log(price__nftPage);
+
+    // console.log(description__nftPage);
+    
+    // console.log(nameuser__nftPage);
+
+    // var a = await getNFTInfo(publicNFT);
+    // console.log(a);
+    // console.log(img);
+    // var a = nftInfo(publicNFT);
+    // console.log(a);
+    const div = document.createElement("div");
+    div.setAttribute("class", "marketplace-card");
+    listItems.push(div);
+    div.innerHTML = `
+    <img class="marketplace-card__img" src= "${img.src}" >
+        
+        <div class="marketplace-card__title">
+        <div class="marketplace-card__title-info">
+        <p class="marketplace-card__title-name">${description__nftPage}</p>
+
+          <p class="marketplace-card__title-author">
+            Owner: <a href="#">${nameuser__nftPage}</a>
+          </p>
+
+        </div>
+        <a class="marketplace-card__title-author-link" href="#">
+          
+        </a>
+      </div>
+      <ul class="marketplace-card__info">
+        <li class="marketplace-info__item">
+          <p class="marketplace-info__item-title">Price: ${price__nftPage} ICX</p>
+          <p class="marketplace-info__item-title"></p>
+           
+        </li>
+        <li class="marketplace-info__item">
+           
+          
+          <button class="buy-now">Edit</button>
+          
+          
+        </li>
+      </ul>
+        `;
+    marketplace1.appendChild(div);
+    
+    
   });
 
 }

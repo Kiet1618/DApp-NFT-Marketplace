@@ -29,6 +29,8 @@
 <script>
   window.onload = function () {
     call();
+    callUser();
+    
     document.body.classList.add("loaded_hiding");
     window.setTimeout(function () {
       document.body.classList.add("loaded");
@@ -88,11 +90,11 @@
         <ul class="menu header__menu">
           <a href="#top-NFT">
             <li class="menu__item">
-              <a href="">Explore</a>
+              <a onclick="mainPage()">Explore</a>
               <ul class="subnav">
                 <li><a onclick="nftPage()">NFTs</a></li>
                 <li><a href="">Collections</a></li>
-                <li><a href="">User</a></li>
+                <li><a onclick="userPage()">User</a></li>
               </ul>
             </li>
           </a>
@@ -1670,94 +1672,98 @@
           <!-- <input type="file" hidden id="input-avatar" /> -->
         </div>
       </div>
-    </div>
-    <section class="marketplace" >
-      <div class="_content">
-        <h4 class="marketplace__subtitle">NFT Marketplace</h4>
-        <h3 class="marketplace__title"><span>Super Hot Drops</span></h3>
-        <div class="marketplace__tabs-box">
-          <ul class="marketplace__tabs">
-              <!-- marketplace__tab--active -->
-            <button
-              class="marketplace__tab"
-              onclick="openContent(event, 'content1')"
-            >
-              My NFT
-            </button>
-            <button
-              class="marketplace__tab"
-              onclick="openContent(event, 'content2')"
-            >
-              My Collection 
-            </button>
-           
-          </ul>
-
-          <div class="marketplace__content-box">
-
-            <div
-              class="marketplace__content marketplace__content--active"
-              id="content1"
-            >
+      <section class="marketplace" id="input-avatar" >
+        <div class="_content">
+          <h4 class="marketplace__subtitle">NFT Marketplace</h4>
+          <h3 class="marketplace__title"><span>Super Hot Drops</span></h3>
+          <div class="marketplace__tabs-box">
+            <ul class="marketplace__tabs">
+                <!-- marketplace__tab--active -->
+              <button
+                class="marketplace__tab"
+                onclick="openContent(event, 'mynft')"
+              >
+                My NFT
+              </button>
+              <button
+                class="marketplace__tab"
+                onclick="openContent(event, 'content2')"
+              >
+                My Collection 
+              </button>
+             
+            </ul>
+  
+            <div class="marketplace__content-box">
+  
+              <div
+                class="marketplace__content marketplace__content--active"
+                id="mynft"
+              >
+                
+            </div>
+            <div class="marketplace__content-box">
+                <div class="marketplace__content" id="content2">
+                    <div id="wrapper">
+                      <div class="_content">
+                        <div class="container">
+                          <div class="collection__item">
+                            <div class="collection__user">
+                              <img src="source/img/user_1.avif" alt="user" />
+                              <span class="name__user">Art Blocks Factory</span>
+                            </div>
               
-          </div>
-          <div class="marketplace__content-box">
-              <div class="marketplace__content" id="content2">
-                  <div id="wrapper">
-                    <div class="_content">
-                      <div class="container">
-                        <div class="collection__item">
-                          <div class="collection__user">
-                            <img src="source/img/user_1.avif" alt="user" />
-                            <span class="name__user">Art Blocks Factory</span>
+                            <!-- collection_list -->
+                            <div class="collection_list">
+              
+                            </div>
                           </div>
-            
-                          <!-- collection_list -->
-                          <div class="collection_list">
-            
+                          <div class="collection__item">
+                            <div class="collection__user">
+                              <img src="source/img/user_2.avif" alt="user" />
+                              <span class="name__user">Bored Ape Yacht Club</span>
+                            </div>
+                            <div class="collection_list"></div>
                           </div>
-                        </div>
-                        <div class="collection__item">
-                          <div class="collection__user">
-                            <img src="source/img/user_2.avif" alt="user" />
-                            <span class="name__user">Bored Ape Yacht Club</span>
+                          <div class="collection__item">
+                            <div class="collection__user">
+                              <img src="source/img/user_3.avif" alt="user" />
+                              <span class="name__user">Noble Cards: Season One</span>
+                            </div>
+              
+                            <div class="collection_list"></div>
                           </div>
-                          <div class="collection_list"></div>
-                        </div>
-                        <div class="collection__item">
-                          <div class="collection__user">
-                            <img src="source/img/user_3.avif" alt="user" />
-                            <span class="name__user">Noble Cards: Season One</span>
+                          <div class="collection__item">
+                            <div class="collection__user">
+                              <img src="source/img/user_1.avif" alt="user" />
+                              <span class="name__user">RTFKT- MNLTH X</span>
+                            </div>
+              
+                            <div class="collection_list"></div>
                           </div>
-            
-                          <div class="collection_list"></div>
-                        </div>
-                        <div class="collection__item">
-                          <div class="collection__user">
-                            <img src="source/img/user_1.avif" alt="user" />
-                            <span class="name__user">RTFKT- MNLTH X</span>
+                          <div class="collection__item">
+                            <div class="collection__user">
+                              <img src="source/img/user_4.webp" alt="user" />
+                              <span class="name__user">COCKPUNCH by Tim Ferriss</span>
+                            </div>
+                            <div class="collection_list"></div>
                           </div>
-            
-                          <div class="collection_list"></div>
-                        </div>
-                        <div class="collection__item">
-                          <div class="collection__user">
-                            <img src="source/img/user_4.webp" alt="user" />
-                            <span class="name__user">COCKPUNCH by Tim Ferriss</span>
-                          </div>
-                          <div class="collection_list"></div>
                         </div>
                       </div>
                     </div>
-                  </div>
-              </div>
-
-          </div>
-          
+                </div>
+  
+            </div>
+            
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      
+      
+    </div>
+    
+    
    
 
 
@@ -1792,7 +1798,32 @@
   
     </div>
   </div>
-  
+  <div id="user__page">
+    <div class="decoration">
+      <div class="circule c1"></div>
+      <div class="circule c2"></div>
+      <div class="circule c3"></div>
+      <div class="circule c4"></div>
+      <div class="circule c5"></div>
+      <div class="circule c6"></div>
+      <div class="circule c7"></div>
+    </div>
+    <div class="wrapper">
+      <div class="_content">
+        <ul class="users" style="margin-top:200px;">
+                          
+          <div class="user__nft" id="getuser">
+            
+
+          </div>
+         
+          
+          
+      </ul> 
+      </div>
+    </div>
+    <div class="lightbox js-lightbox js-toggle-cart"></div>
+  </div>
  
 
  
