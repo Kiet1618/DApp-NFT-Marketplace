@@ -365,16 +365,16 @@ function deleteNFT() {
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
 }
 
-function  editNFT() {
+function editNFT(img) {
     var onSale;
     var visibility;
-    if (document.getElementById('onSale').checked) {
+    if (document.getElementById('onsaleEditNFT').checked) {
         onSale = "1";
     }
     else {
         onSale = "0";
     }
-    if (document.getElementById('visibility').checked) {
+    if (document.getElementById('visibilityEditNFT').checked) {
         visibility = "1";
     }
     else {
@@ -398,7 +398,7 @@ function  editNFT() {
                     dataType: "call",
                     data: {
                         method: "editNFT", // SCORE external function
-                        params: { _nft: document.getElementById('nft-link').value, _description: document.getElementById('d-nft').value, _visibility: visibility, _onSale: onSale, _price: document.getElementById('price')}
+                        params: { _nft: img, _description: document.getElementById('descriptionEditNFT').value, _visibility: visibility, _onSale: onSale, _price: document.getElementById('priceEditNFT').value}
                     }
                 }
             }
@@ -673,10 +673,10 @@ async function main() {
 function openContent(evt, contents) {
   var i, marketplaceContent, marketplaceTab;
   marketplaceContent = document.getElementsByClassName("marketplace__content");
-  console.log(marketplaceContent);
+//   console.log(marketplaceContent);
 
   for (i = 0; i < marketplaceContent.length; i++) {
-    console.log(marketplaceContent[i]);
+    // console.log(marketplaceContent[i]);
     marketplaceContent[i].style.display = "none";
   }
   marketplaceTab = document.getElementsByClassName("marketplace__tab");
@@ -729,12 +729,12 @@ var imageList = [
 function showImage(imageList) {
   const collectionList = document.querySelectorAll(".collection_list");
   collectionList.forEach((collection) => {
-    console.log(collection);
+    // console.log(collection);
     imageList.map((image) => {
       const img = document.createElement("img");
       img.src = image.src;
       collection.appendChild(img);
-      console.log(img.src);
+    //   console.log(img.src);
     });
   });
 }
@@ -1052,12 +1052,14 @@ function profile(){
   document.getElementById("profile__page").style.display="block";
   document.getElementById("nft__page").style.display="none";
   document.getElementById("user__page").style.display="none";
+  document.getElementById("collection__page").style.display="none";
 
 }
 function nftPage(){
   document.getElementById("main__page").style.display="none";
   document.getElementById("profile__page").style.display="none";
   document.getElementById("user__page").style.display="none";
+  document.getElementById("collection__page").style.display="none";
   document.getElementById("nft__page").style.display="block";
 
 }
@@ -1067,14 +1069,25 @@ function userPage(){
   document.getElementById("profile__page").style.display="none";
   document.getElementById("nft__page").style.display="none";
   document.getElementById("user__page").style.display="block";
+  document.getElementById("collection__page").style.display="none";
+
 }
 
+function collectionPage(){
+    document.getElementById("main__page").style.display="none";
+    document.getElementById("profile__page").style.display="none";
+    document.getElementById("nft__page").style.display="none";
+    document.getElementById("user__page").style.display="none";
+    document.getElementById("collection__page").style.display="block";
+}
 
 function mainPage(){
   document.getElementById("main__page").style.display="block";
   document.getElementById("profile__page").style.display="none";
   document.getElementById("nft__page").style.display="none";
   document.getElementById("user__page").style.display="none";
+  document.getElementById("collection__page").style.display="none";
+
 
 }
 function swapIcon() {
@@ -1089,13 +1102,39 @@ function swapIcon() {
 const listItems = [];
 const marketplace = document.querySelector("#content1");
 const marketplace1 = document.querySelector("#mynft");
-const users = document.querySelector("#getuser");
+const collection__update = document.querySelector("#updateCollection");
 
 // const collectionNFT = document.querySelector("#item1");
+async function callPublicCollection(){
+    const publicCollections = await getPublicCollections();
+    console.log(publicCollections);
+    
+    publicCollections.map(async(collection)=>{
+        const nftCollection = await getCollectionNFTs(collection);
+        console.log(nftCollection);
+        
+        const div = document.createElement("div");
+        div.setAttribute("class","collection__item");
+        listItems.push(div);
+        div.innerHTML=`
+        <div class="collection__user">
+             
+        <span class="name__user">${collection}</span>
+      </div>
 
+      
+      <div class="collection_list">
+   <img src="${nftCollection}">
+      </div>
+       
+        `
+        collection__update.appendChild(div);
+        console.log(div);
+    })
+}
 async function callUser(){
     allUsers = await getUsers();
-    console.log(allUsers);
+
     allUsers.map(async (user) =>{
         var avatar__profilepage = await getAvatar(user);
         // console.log(avatar__profilepage);
@@ -1123,8 +1162,6 @@ async function callUser(){
 
    
 }
-
-
 async function call(){
   allPublicNFTs = await getPublicNFTs();
   
@@ -1217,7 +1254,7 @@ async function call(){
 }
 async function call2(){
     var mynfts = myAddress+"/Owning"
-    console.log(mynfts);
+    // console.log(mynfts);
   mynft = await getCollectionNFTs(mynfts);
   
   
@@ -1229,21 +1266,11 @@ async function call2(){
     var info = await getNFTInfo(publicNFT);
     // console.log(info);
     
-    var avatar__nftPage = await getAvatar(info[0]);
+    // var avatar__nftPage = await getAvatar(info[0]);
     var nameuser__nftPage = await getName(info[0]);
     var description__nftPage =  (info[2]);
     var price__nftPage =  (info[1]);
-    // console.log(price__nftPage);
 
-    // console.log(description__nftPage);
-    
-    // console.log(nameuser__nftPage);
-
-    // var a = await getNFTInfo(publicNFT);
-    // console.log(a);
-    // console.log(img);
-    // var a = nftInfo(publicNFT);
-    // console.log(a);
     const div = document.createElement("div");
     div.setAttribute("class", "marketplace-card");
     listItems.push(div);
@@ -1272,7 +1299,10 @@ async function call2(){
         <li class="marketplace-info__item">
            
           
-          <button class="buy-now">Edit</button>
+            
+            <button class="buy-now">
+            <a  class="js-open-modal"  onclick="showEditNFTmodal('${publicNFT}')">Edit</a>
+            </button>
           
           
         </li>
@@ -1293,4 +1323,17 @@ async function callApiAddress() {
     // console.log(avatar);
     document.getElementById("avatar__profile").src = avatar;
     
+}
+var imgNFT;
+function showEditNFTmodal(image) {
+   document.getElementById("modalEditNft").style.display="block";
+   imgNFT = image;
+}
+function editNFTModal(){
+  
+    editNFT(imgNFT);
+}
+function closeModalNFT(){
+   document.getElementById("modalEditNft").style.display="none";
+
 }

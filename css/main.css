@@ -111,6 +111,17 @@ a {
   display: none;
 }
 
+#collection__page {
+  display: none;
+}
+
+#modalEditNft {
+  position: absolute;
+  top: 85%;
+  right: 25%;
+  display: none;
+}
+
 .marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__info1, .marketplace1__tabs-box .marketplace__content-box .marketplace__content .marketplace-card1__title1, .marketplace1__tabs-box .marketplace__tabs, .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__info, .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__title, .marketplace__tabs-box .marketplace__tabs {
   display: -webkit-box;
   display: -ms-flexbox;
