@@ -1079,8 +1079,11 @@ async function call(){
     
     var avatar__nftPage = await getAvatar(info[0]);
     var nameuser__nftPage = await getName(info[0]);
-    var description__nftPage = await (info[2]);
-    console.log(description__nftPage);
+    var description__nftPage =  (info[2]);
+    var price__nftPage =  (info[1]);
+    console.log(price__nftPage);
+
+    // console.log(description__nftPage);
     
     // console.log(nameuser__nftPage);
 
@@ -1113,7 +1116,7 @@ async function call(){
       <ul class="marketplace-card__info">
         <li class="marketplace-info__item">
           <p class="marketplace-info__item-title">Current Bid</p>
-          <p class="marketplace-info__item-data">1.90 ETH</p>
+          <p class="marketplace-info__item-data">${price__nftPage} ICX</p>
         </li>
         <li class="marketplace-info__item">
           <p class="marketplace-info__item-title">Ending In</p>

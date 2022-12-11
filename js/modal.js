@@ -30,8 +30,12 @@ span__profile.onclick = function() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal || event.target == modal__profile) {
+  if (event.target == modal) {
     modal.style.display = "none";
+    
+  
+  }
+  else if ( event.target == modal__profile){
     modal__profile.style.display = "none";
     callApiAddress();
   }
