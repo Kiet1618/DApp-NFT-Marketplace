@@ -1,4 +1,4 @@
-
+//UPDATE 
 const IconService = window['icon-sdk-js'].default;
 const httpProvider = new IconService.HttpProvider('https://sejong.net.solidwallet.io/api/v3')
 const iconService = new IconService(httpProvider);
@@ -1079,6 +1079,8 @@ async function call(){
     
     var avatar__nftPage = await getAvatar(info[0]);
     var nameuser__nftPage = await getName(info[0]);
+    var description__nftPage = await (info[2]);
+    console.log(description__nftPage);
     
     // console.log(nameuser__nftPage);
 
@@ -1094,10 +1096,11 @@ async function call(){
         <img class="marketplace-card__img" src= "${img.src}" >
         <div class="marketplace-card__title">
         <div class="marketplace-card__title-info">
-          <p class="marketplace-card__title-name">"${nameUser}"</p>
           <p class="marketplace-card__title-author">
             Created by <a href="#">${nameuser__nftPage}</a>
           </p>
+          <p class="marketplace-card__title-name">${description__nftPage}</p>
+
         </div>
         <a class="marketplace-card__title-author-link" href="#">
           <img
