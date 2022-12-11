@@ -38,6 +38,8 @@ function connectWallet() {
         if (type === 'RESPONSE_ADDRESS') {
             myAddress = payload;
             swapIcon() ;
+            callApiAddress();
+            
         }
     }
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
@@ -72,6 +74,7 @@ function setName() {
     window.dispatchEvent(setNameEvent);
     const eventHandler = event => {
         window.removeEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
+        
     }
     window.addEventListener('ICONEX_RELAY_RESPONSE', eventHandler);
 
@@ -1033,6 +1036,9 @@ inputAvatar.addEventListener('change', (e) => {
 function profile(){
   document.getElementById("main__page").style.display="none";
   document.getElementById("profile__page").style.display="block";
+  document.getElementById("nft__page").style.display="none";
+
+
   
 
 }
@@ -1044,6 +1050,8 @@ function nftPage(){
 }
 function mainPage(){
   document.getElementById("main__page").style.display="block";
+  document.getElementById("profile__page").style.display="none";
+  document.getElementById("nft__page").style.display="none";
 
 }
 function swapIcon() {
@@ -1129,7 +1137,13 @@ async function call(){
   });
 
 }
-
-
-
-
+async function callApiAddress() {
+    const name = await getName(myAddress);
+    const avatar = await getAvatar(myAddress);
+    // console.log(name);
+    document.getElementById("name__user").innerHTML = name;
+    document.getElementById("my__address").innerHTML = myAddress;
+    // console.log(avatar);
+    document.getElementById("avatar__profile").src = avatar;
+    
+}

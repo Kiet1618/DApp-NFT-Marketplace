@@ -2412,7 +2412,7 @@ button {
 .preview {
   border: 2px none rgb(78, 16, 16);
   width: 100%;
-  height: 350px;
+  height: 180px;
   color: white;
   font-size: 22px;
   position: relative;
@@ -2432,7 +2432,8 @@ button {
       -ms-flex-direction: column;
           flex-direction: column;
   cursor: pointer;
-  background-color: #f1f1f1;
+  background-color: #cdc5c5;
+  margin-top: 30px;
 }
 .preview img {
   width: 100%;
@@ -2447,12 +2448,18 @@ button {
   z-index: 1;
 }
 
+#edit__profile {
+  position: absolute;
+  top: 240px;
+  right: 130px;
+}
+
 .preview1 {
   border: 2px none rgb(78, 16, 16);
   width: 132px;
   height: 132px;
-  top: 375px;
-  left: 120px;
+  top: 150px;
+  left: 160px;
   color: white;
   font-size: 22px;
   position: absolute;
@@ -2578,7 +2585,6 @@ button {
   border-radius: 6px;
   margin: 0 auto;
   margin-bottom: 10px;
-  width: 100%;
   max-width: 219px;
   height: 214px;
 }
@@ -3096,6 +3102,79 @@ body.open .lightbox {
 .button--light {
   background: #FFF;
   color: #F00;
+}
+
+.user--info {
+  width: 100%;
+  height: 100vh;
+  background: pink;
+  border-radius: 10px;
+  padding-top: 150px;
+}
+
+.userh {
+  width: 100%;
+  height: 100px;
+  background: grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.infoh {
+  padding-right: 1100px;
+  padding-left: 40px;
+}
+
+.edit {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.avatarh img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.library {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.item {
+  display: inline-block;
+  text-align: left;
+  width: 80px;
+  height: 80px;
+  background: white;
+  border: solid 1px black;
+  margin: 20px;
 }
 
 .top-NFT .top-NFT__h-flex {
