@@ -2401,6 +2401,11 @@ button {
   /* max-width: 450px; */
 }
 
+.buy-now {
+  font-size: small;
+  margin: 7px 0;
+}
+
 .cart__position {
   margin-top: 12px;
 }
@@ -2609,10 +2614,12 @@ button {
 }
 .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__info .marketplace-info__item-title {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 14px;
   color: #545c71;
   margin-bottom: 4px;
+  text-align: left;
+  margin-bottom: 15px;
 }
 .marketplace__tabs-box .marketplace__content-box .marketplace__content .marketplace-card__info .marketplace-info__item-data {
   font-weight: 500;
@@ -2941,9 +2948,9 @@ button {
   display: inline-block;
   background: #39C;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 10px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 10px;
   text-decoration: none;
   color: #FFF;
 }

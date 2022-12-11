@@ -1065,7 +1065,10 @@ function swapIcon() {
 
 const listItems = [];
 const marketplace = document.querySelector("#content1");
+// const marketplace1 = document.querySelector("#mynft");
+
 // const collectionNFT = document.querySelector("#item1");
+
 async function call(){
   allPublicNFTs = await getPublicNFTs();
   
@@ -1099,10 +1102,11 @@ async function call(){
         <img class="marketplace-card__img" src= "${img.src}" >
         <div class="marketplace-card__title">
         <div class="marketplace-card__title-info">
+        <p class="marketplace-card__title-name">${description__nftPage}</p>
+
           <p class="marketplace-card__title-author">
-            Created by <a href="#">${nameuser__nftPage}</a>
+            Owner: <a href="#">${nameuser__nftPage}</a>
           </p>
-          <p class="marketplace-card__title-name">${description__nftPage}</p>
 
         </div>
         <a class="marketplace-card__title-author-link" href="#">
@@ -1115,18 +1119,9 @@ async function call(){
       </div>
       <ul class="marketplace-card__info">
         <li class="marketplace-info__item">
-          <p class="marketplace-info__item-title">Current Bid</p>
-          <p class="marketplace-info__item-data">${price__nftPage} ICX</p>
-        </li>
-        <li class="marketplace-info__item">
-          <p class="marketplace-info__item-title">Ending In</p>
-          <p class="product__text">
-            <a class="button js-add-product" href="#" title="Add to cart">
-              Add to cart
-            </a>
-          </p>
-          
-          <div
+          <p class="marketplace-info__item-title">Price: ${price__nftPage} ICX</p>
+          <p class="marketplace-info__item-title"></p>
+           <div
             class="marketplace-info__item-data seller-card__counter"
           >
             <div class="counter__hours counter__item">
@@ -1145,9 +1140,21 @@ async function call(){
             </div>
           </div>
         </li>
+        <li class="marketplace-info__item">
+           
+          <p class="product__text">
+            <a class="buttonn js-add-product" href="#" title="Add to cart">
+              Add to cart
+            </a>
+          </p>
+          <button class="buy-now">Buy now</button>
+          
+          
+        </li>
       </ul>
         `;
     marketplace.appendChild(div);
+    
     console.log(marketplace);
   });
 

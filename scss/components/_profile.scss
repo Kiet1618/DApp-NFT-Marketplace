@@ -181,6 +181,7 @@
             font-size: 14px;
             line-height: 16px;
             margin-bottom: 10px;
+            
 
             &-name {
               font-weight: 700;
@@ -205,10 +206,12 @@
 
               &-title {
                 font-weight: 400;
-                font-size: 12px;
+                font-size: 20px;
                 line-height: 14px;
                 color: #545c71;
                 margin-bottom: 4px;
+                text-align: left;
+                margin-bottom: 15px;
               }
 
               &-data {
@@ -525,10 +528,10 @@
   display: inline-block;
   background: #39C;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 10px;
   
   font-weight: bold;
-  font-size: 14px;
+  font-size: 10px;
   text-decoration: none;
   color: #FFF;
 }

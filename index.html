@@ -1599,7 +1599,39 @@
 
     
   </div>
+  <div id="nft__page">
+    <div class="decoration">
+      <div class="circule c1"></div>
+      <div class="circule c2"></div>
+      <div class="circule c3"></div>
+      <div class="circule c4"></div>
+      <div class="circule c5"></div>
+      <div class="circule c6"></div>
+      <div class="circule c7"></div>
+    </div>
+    <div class="wrapper">
+      <section class="marketplace" id="input-avatar">
+        <div class="_content">
+          <h4 class="marketplace__subtitle">NFT Marketplace</h4>
+          <h3 class="marketplace__title"><span>Super Hot Drops</span></h3>
+          <div class="marketplace__tabs-box">
+            <ul class="marketplace__tabs">
+              <button class="marketplace__tab" onclick="openContent(event, 'content1')">
+                NFT
+              </button>
+            </ul>
+            <div class="marketplace__content-box">
+              <div class="marketplace__content marketplace__content--active" id="content1">
+              </div>
+            </div>
+            
+          </div>
+        </div>
+    </section>
+    </div>
+    <div class="lightbox js-lightbox js-toggle-cart"></div>
 
+  </div>
   <div id="profile__page">
     
     <div class="decoration">
@@ -1639,6 +1671,93 @@
         </div>
       </div>
     </div>
+    <section class="marketplace" >
+      <div class="_content">
+        <h4 class="marketplace__subtitle">NFT Marketplace</h4>
+        <h3 class="marketplace__title"><span>Super Hot Drops</span></h3>
+        <div class="marketplace__tabs-box">
+          <ul class="marketplace__tabs">
+              <!-- marketplace__tab--active -->
+            <button
+              class="marketplace__tab"
+              onclick="openContent(event, 'content1')"
+            >
+              My NFT
+            </button>
+            <button
+              class="marketplace__tab"
+              onclick="openContent(event, 'content2')"
+            >
+              My Collection 
+            </button>
+           
+          </ul>
+
+          <div class="marketplace__content-box">
+
+            <div
+              class="marketplace__content marketplace__content--active"
+              id="content1"
+            >
+              
+          </div>
+          <div class="marketplace__content-box">
+              <div class="marketplace__content" id="content2">
+                  <div id="wrapper">
+                    <div class="_content">
+                      <div class="container">
+                        <div class="collection__item">
+                          <div class="collection__user">
+                            <img src="source/img/user_1.avif" alt="user" />
+                            <span class="name__user">Art Blocks Factory</span>
+                          </div>
+            
+                          <!-- collection_list -->
+                          <div class="collection_list">
+            
+                          </div>
+                        </div>
+                        <div class="collection__item">
+                          <div class="collection__user">
+                            <img src="source/img/user_2.avif" alt="user" />
+                            <span class="name__user">Bored Ape Yacht Club</span>
+                          </div>
+                          <div class="collection_list"></div>
+                        </div>
+                        <div class="collection__item">
+                          <div class="collection__user">
+                            <img src="source/img/user_3.avif" alt="user" />
+                            <span class="name__user">Noble Cards: Season One</span>
+                          </div>
+            
+                          <div class="collection_list"></div>
+                        </div>
+                        <div class="collection__item">
+                          <div class="collection__user">
+                            <img src="source/img/user_1.avif" alt="user" />
+                            <span class="name__user">RTFKT- MNLTH X</span>
+                          </div>
+            
+                          <div class="collection_list"></div>
+                        </div>
+                        <div class="collection__item">
+                          <div class="collection__user">
+                            <img src="source/img/user_4.webp" alt="user" />
+                            <span class="name__user">COCKPUNCH by Tim Ferriss</span>
+                          </div>
+                          <div class="collection_list"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </section>
    
 
 
@@ -1673,1178 +1792,10 @@
   
     </div>
   </div>
-
-  <div id="nft__page">
-    <div class="decoration">
-      <div class="circule c1"></div>
-      <div class="circule c2"></div>
-      <div class="circule c3"></div>
-      <div class="circule c4"></div>
-      <div class="circule c5"></div>
-      <div class="circule c6"></div>
-      <div class="circule c7"></div>
-    </div>
-    <div class="wrapper">
-
-
-      
-      <section class="marketplace" id="input-avatar">
-        <div class="_content">
-          <h4 class="marketplace__subtitle">NFT Marketplace</h4>
-          <h3 class="marketplace__title"><span>Super Hot Drops</span></h3>
-          <div class="marketplace__tabs-box">
-            <ul class="marketplace__tabs">
-              <!-- marketplace__tab--active -->
-              <button class="marketplace__tab" onclick="openContent(event, 'content1')">
-                NFT
-              </button>
-              
-            </ul>
-
-            <div class="marketplace__content-box">
-              <div class="marketplace__content marketplace__content--active" id="content1">
-
-              </div>
-
-              <!-- <div class="marketplace__content">content-3</div> -->
-              <!-- <div class="marketplace__content">
-                    <div id="wrapper">
-                      <div class="_content">
-                        <ul class="users" onload="getPublicNFTs()">
-                          
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="user-item">
-                                  <div class="user-top">
-                                      <a href="" class="user-thumb">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </a>
-                                      <div class="user-avatar">
-                                          <img src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg==" loading="lazy" style="opacity: 1; position: relative;"/>
-                                      </div>
-                                  </div>
-                                  <div class="user-info">
-                                      <div class="user-cat">
-                                          <a  href="">NFY FAN</a>
-                                          <i class="fa-solid fa-circle-check"></i>
-                                      </div>
-                                      <div  class="user-name">
-                                          <a href="">26.3K Followers</a>
-                                      </div>
-                                      <a href="#">
-                                          <button class="button">
-                                              <i class="fa-solid fa-plus"></i>
-                                              Follow
-                                          </button>
-                                      </a>
-                                  </div>
-                              </div>
-                          </li>
-                      </ul> 
-                      </div>
-                  </div> 
-                  </div>
-                  <div class="marketplace__content">content-4</div>
-                  <div class="marketplace__content">content-5</div>
-                  <div class="marketplace__content">content-6</div>
-                  <div class="marketplace__content">content-7</div> -->
-            </div>
-            <div class="marketplace__content-box">
-              <div class="marketplace__content" id="content2">
-                <div id="wrapper">
-                  <div class="_content">
-                    <ul class="products">
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="product-item">
-                          <div class="product-top">
-                            <a href="" class="product-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA=="
-                                alt="" />
-                            </a>
-                            <a href="" class="buy-now">Buy Now</a>
-                          </div>
-                          <div class="product-info">
-                            <div class="product-cat">
-                              <a href="">Gods Unchained</a>
-                            </div>
-                            <button>...</button>
-                            <div class="product-name">
-                              <a href="">Censure</a>
-                            </div>
-                          </div>
-                          <div class="product-money">
-                            <div class="product-price">
-                              <a href="">Price</a>
-                              <a href="">Highest bid</a>
-                            </div>
-                            <div class="product-highest_bid">
-                              <a href="">~0.001 ETH</a>
-                              <a href="">No bids yet</a>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="marketplace__content-box">
-              <div class="marketplace__content" id="content3">
-                <div id="wrapper">
-                  <div class="_content">
-                    <ul class="users" onload="getPublicNFTs()">
-
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="user-item">
-                          <div class="user-top">
-                            <a href="" class="user-thumb">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_cover_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1YYnNzaVRnTWJFb1VSdEJTYlB0Q3ROVWt2azRTekV2cUR0N3p3QmR6blluVg=="
-                                alt="YFI Fan NFT collection" loading="lazy" style="opacity: 1; position: relative;" />
-                            </a>
-                            <div class="user-avatar">
-                              <img
-                                src="https://assets.raribleuserdata.com/prod/v1/image/t_avatar_preview/aHR0cHM6Ly9yYXJpYmxlLm15cGluYXRhLmNsb3VkL2lwZnMvUW1VVDlCWWZhdFNDZ29UYVpkdWhScnpHZlF1WVdmNmhGb29zdWpidjZKVjk3Vg=="
-                                loading="lazy" style="opacity: 1; position: relative;" />
-                            </div>
-                          </div>
-                          <div class="user-info">
-                            <div class="user-cat">
-                              <a href="">NFY FAN</a>
-                              <i class="fa-solid fa-circle-check"></i>
-                            </div>
-                            <div class="user-name">
-                              <a href="">26.3K Followers</a>
-                            </div>
-                            <a href="#">
-                              <button class="button">
-                                <i class="fa-solid fa-plus"></i>
-                                Follow
-                              </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="marketplace__content">content-4</div>
-              <div class="marketplace__content">content-5</div>
-              <div class="marketplace__content">content-6</div>
-              <div class="marketplace__content">content-7</div>
-
-            </div>
-
-            <div class="marketplace__view-more">
-              <!-- <button class="button seller-card__button">
-                        <a href="#">
-                          <span>View More</span>
   
-                          <svg
-                            width="25"
-                            height="10"
-                            viewBox="0 0 25 10"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M19.3086 8.29153L22.6015 4.99867L19.3086 1.70581L19.9672 0.388672L24.5772 4.99867L19.9672 9.60867L19.3086 8.29153Z"
-                              fill="white"
-                            />
-                            <line
-                              x1="23.4717"
-                              y1="5.36328"
-                              x2="0.257097"
-                              y2="5.36328"
-                              stroke="white"
-                              stroke-width="1.10546"
-                            />
-                          </svg>
-                        </a>
-                      </button> -->
-              <!-- <a class="marketplace__view-more-link" href="#">View More</a> -->
-              <!-- <button onclick="showAll()">show</button>
-              <button onclick="getPublicNFTs()">hi</button> -->
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- <div id="wrapper">
-            <div class="_content">
-                <ul class="products">
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a  href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="product-top">
-                                <a href="" class="product-thumb">
-                                    <img src="https://assets.raribleuserdata.com/prod/v1/image/t_image_preview/aHR0cHM6Ly9jYXJkLmdvZHN1bmNoYWluZWQuY29tLz9pZD0xMjY1JnE9NA==" alt="">
-                                </a>
-                                <a href="" class="buy-now">Buy Now</a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-cat">
-                                    <a href="">Gods Unchained</a>
-                                </div>
-                                <button>...</button>
-                                <div  class="product-name">
-                                    <a href="">Censure</a>
-                                </div>
-                            </div>
-                            <div class="product-money">
-                                <div class="product-price">
-                                    <a href="">Price</a>
-                                    <a href="">Highest bid</a>
-                                </div>
-                                <div class="product-highest_bid">
-                                    <a href="">~0.001 ETH</a>
-                                    <a href="">No bids yet</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul> 
-            </div>
-        </div>  -->
-        
-       
+ 
 
-
-
-    </div>
-    <div class="lightbox js-lightbox js-toggle-cart"></div>
-
-  </div>
+ 
   <div id="myModal" class="modal">
 
     <!-- Modal content -->
