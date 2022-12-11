@@ -898,7 +898,7 @@ function counters(){
       } else {
           counter.children[2].firstElementChild.innerHTML = 60
           counter.children[1].firstElementChild.innerHTML = 60
-          counter.children[0].firstElementChild.innerHTML = hours - 1
+          counter.children[0].firstElementChild.innerHTML = hour - 1
       }
   }
 }
@@ -1065,7 +1065,7 @@ function nftPage(){
 }
 
 function userPage(){
-    document.getElementById("main__page").style.display="none";
+document.getElementById("main__page").style.display="none";
   document.getElementById("profile__page").style.display="none";
   document.getElementById("nft__page").style.display="none";
   document.getElementById("user__page").style.display="block";
@@ -1103,6 +1103,7 @@ const listItems = [];
 const marketplace = document.querySelector("#content1");
 const marketplace1 = document.querySelector("#mynft");
 const collection__update = document.querySelector("#updateCollection");
+const users = document.querySelector("#getuser");
 
 // const collectionNFT = document.querySelector("#item1");
 async function callPublicCollection(){

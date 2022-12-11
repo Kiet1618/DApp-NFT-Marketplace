@@ -29,6 +29,7 @@ h1, h2, h3 , h4, h5, h6 {
     left: 0;
     z-index: 2000;
     background: transparent;
+    background: #0066ff;
 }
 .blog-head-inner{
   display: grid;
@@ -122,7 +123,7 @@ h1, h2, h3 , h4, h5, h6 {
   display: block;
   padding: 8px 15px;
   color: (#15171a,#15171a);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -.015em;
   font-size: 15px;
   line-height: 1em;
@@ -182,6 +183,22 @@ h1, h2, h3 , h4, h5, h6 {
   width: 239px;
   height: 55px;
 }
+.blog-back{
+  position: relative;
+  right: 20px;
+  
+}
+.blog-button-back {
+  display: block;
+  padding: 8px 15px;
+  color: (#15171a,#15171a);
+  font-weight: 600;
+  letter-spacing: -.015em;
+  font-size: 15px;
+  line-height: 1em;
+  background: #fff;
+  border-radius: 30px;
+}
 .outer{
   position: relative;
   padding: 0 4vmin;
@@ -206,6 +223,7 @@ h1, h2, h3 , h4, h5, h6 {
   min-height: 220px;
   background-size: cover;
   word-break: break-word;
+  padding-top: 100px;
 }
 .blog-card-image-link{
   position: relative;
