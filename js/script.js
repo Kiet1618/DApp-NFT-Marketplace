@@ -1112,25 +1112,29 @@ async function callPublicCollection(){
     
     publicCollections.map(async(collection)=>{
         const nftCollection = await getCollectionNFTs(collection);
-        console.log(nftCollection);
-        
+console.log(nftCollection);
+        nftCollection.forEach(async(nft)=>{
+            const imgCollection = document.createElement("img");
+            imgCollection.src = nft;
+const nameCollection = collection.slice(43);
+           
         const div = document.createElement("div");
         div.setAttribute("class","collection__item");
         listItems.push(div);
         div.innerHTML=`
         <div class="collection__user">
              
-        <span class="name__user">${collection}</span>
+        <span class="name__user">${nameCollection}</span>
       </div>
-
-      
       <div class="collection_list">
-   <img src="${nftCollection}">
+    <img src="${imgCollection.src}">
+    <img src="${imgCollection.src}">
       </div>
-       
         `
         collection__update.appendChild(div);
-        console.log(div);
+        console.log(div); 
+        })
+        
     })
 }
 async function callUser(){
@@ -1170,6 +1174,7 @@ async function call(){
   allPublicNFTs.map(async (publicNFT) => {
     const img = document.createElement("img");
     img.src = publicNFT;
+  
    ;
     var info = await getNFTInfo(publicNFT);
     // console.log(info);
