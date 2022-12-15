@@ -1113,7 +1113,7 @@ async function callPublicCollection(){
     publicCollections.map(async(collection)=>{
         const nftCollection = await getCollectionNFTs(collection);
 console.log(nftCollection);
-        nftCollection.forEach(async(nft)=>{
+        nftCollection.map(async(nft)=>{
             const imgCollection = document.createElement("img");
             imgCollection.src = nft;
 const nameCollection = collection.slice(43);
