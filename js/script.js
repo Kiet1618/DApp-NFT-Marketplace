@@ -415,16 +415,19 @@ function editNFT(img) {
 function numHex(s)
 {
     var a = s.toString(16);
-    if ((a.length % 2) > 0) {
+   
         a = "0" + "x" +a;
-    }
+    
     return a;
 }
 
 function sendBid(str, price) {
-    var _price = 0xde0b6b3a7640000*price;
+    var icx = String(price);
+    var _price = 1000000000000000000*price;
     var _value = numHex(_price);
+   
     var bid = String(_value);
+    console.log(bid);
     const setAvatarEvent = new CustomEvent('ICONEX_RELAY_REQUEST', {
         detail: {
             type: 'REQUEST_JSON-RPC',
@@ -443,7 +446,7 @@ function sendBid(str, price) {
                     dataType: "call",
                     data: {
                         method: "sendBid", // SCORE external function
-                        params: { _user: myAddress, _nft: str, _bid: "1"}
+                        params: { _user: myAddress, _nft: str, _bid: icx}
                     }
                 }
             }
@@ -655,7 +658,6 @@ const value = async () => {
 async function main() {
     
     allPublicNFTs = await getPublicNFTs();
-    console.log(allPublicNFTs);
     allUsers = await getUsers();
 
     // publicCollections = await getPublicCollections(myAddress);
@@ -673,10 +675,8 @@ async function main() {
 function openContent(evt, contents) {
   var i, marketplaceContent, marketplaceTab;
   marketplaceContent = document.getElementsByClassName("marketplace__content");
-//   console.log(marketplaceContent);
 
   for (i = 0; i < marketplaceContent.length; i++) {
-    // console.log(marketplaceContent[i]);
     marketplaceContent[i].style.display = "none";
   }
   marketplaceTab = document.getElementsByClassName("marketplace__tab");
@@ -729,12 +729,10 @@ var imageList = [
 function showImage(imageList) {
   const collectionList = document.querySelectorAll(".collection_list");
   collectionList.forEach((collection) => {
-    // console.log(collection);
     imageList.map((image) => {
       const img = document.createElement("img");
       img.src = image.src;
       collection.appendChild(img);
-    //   console.log(img.src);
     });
   });
 }
@@ -1108,12 +1106,11 @@ const users = document.querySelector("#getuser");
 // const collectionNFT = document.querySelector("#item1");
 async function callPublicCollection(){
     const publicCollections = await getPublicCollections();
-    console.log(publicCollections);
     
     publicCollections.map(async(collection)=>{
         const nftCollection = await getCollectionNFTs(collection);
 console.log(nftCollection);
-        nftCollection.map(async(nft)=>{
+        nftCollection.forEach(async(nft)=>{
             const imgCollection = document.createElement("img");
             imgCollection.src = nft;
 const nameCollection = collection.slice(43);
@@ -1132,7 +1129,6 @@ const nameCollection = collection.slice(43);
       </div>
         `
         collection__update.appendChild(div);
-        console.log(div); 
         })
         
     })
