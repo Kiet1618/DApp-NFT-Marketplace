@@ -1109,11 +1109,20 @@ async function callPublicCollection(){
     
     publicCollections.map(async(collection)=>{
         const nftCollection = await getCollectionNFTs(collection);
-console.log(nftCollection);
-        nftCollection.forEach(async(nft)=>{
-            const imgCollection = document.createElement("img");
-            imgCollection.src = nft;
-const nameCollection = collection.slice(43);
+// console.log(nftCollection);
+
+console.log(nftCollection[0])
+console.log(nftCollection[1])
+console.log(nftCollection.length)
+// console.log(collection);
+    //     nftCollection.map(async(nft)=>{
+    //         const imgCollection = document.createElement("img");
+    //         imgCollection.src = nft;
+            
+
+    // })
+    const nameCollection = collection.slice(43);
+// console.log(nameCollection);
            
         const div = document.createElement("div");
         div.setAttribute("class","collection__item");
@@ -1124,14 +1133,23 @@ const nameCollection = collection.slice(43);
         <span class="name__user">${nameCollection}</span>
       </div>
       <div class="collection_list">
-    <img src="${imgCollection.src}">
-    <img src="${imgCollection.src}">
+    <img src="${nftCollection[0]}" alt="">
+    <img src="${nftCollection[1]}" alt="">
+    <img src="${nftCollection[2]}" alt="">
+    <img src="${nftCollection[3]}" alt="">
+    <img src="${nftCollection[4]}" alt="">
+    <img src="${nftCollection[5]}" alt="">
+    <img src="${nftCollection[6]}" alt="">
+
+    
+    
+   
+  
       </div>
         `
         collection__update.appendChild(div);
         })
         
-    })
 }
 async function callUser(){
     allUsers = await getUsers();
